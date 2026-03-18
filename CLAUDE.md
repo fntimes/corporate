@@ -1,0 +1,62 @@
+# fntimes/corporate - 한국금융신문 기업 페이지
+
+## 프로젝트 개요
+한국금융신문(fntimes.com)의 회사소개, 약관, 고객센터 등 기업 정보 페이지를 정적 사이트로 운영하는 프로젝트.
+
+## 기술 스택
+- **순수 정적 사이트**: HTML + CSS + JS (프레임워크 없음)
+- **호스팅**: GitHub Pages (GitHub Actions 자동 배포)
+- **커스텀 도메인**: `corporate.fntimes.com` (CNAME 설정 완료, DNS 미연결)
+- **폰트**: Pretendard (로컬 woff2, CDN 사용하지 않음)
+
+## 디렉토리 구조
+```
+corporate/
+├── index.html              → / (이용약관)
+├── subscribe/
+│   └── index.html          → /subscribe (구독신청)
+├── css/
+│   └── style.css           → 공통 CSS (모든 페이지 공유)
+├── js/
+│   └── main.js             → 공통 JS (메가메뉴, 모바일 nav)
+├── fonts/                  → Pretendard woff2 (5 weights)
+├── images/                 → header_logo, footer_logo, 1992
+├── CNAME                   → 커스텀 도메인
+└── .github/workflows/
+    └── deploy.yml          → GitHub Pages 배포
+```
+
+## URL 규칙
+- 폴더 기반 URL: `/about` → `about/index.html`
+- 새 페이지 추가 시 폴더 생성 후 `index.html` 배치
+- 내부 링크는 절대경로 사용: `href="/subscribe"`, `href="/"`
+- 하위 폴더 페이지의 정적 리소스는 상대경로: `../css/style.css`, `../images/...`
+
+## GNB 메뉴 구조 (전체 페이지 목록)
+현재 이용약관, 구독신청만 구현됨. `#` 링크는 미구현 페이지.
+
+1. **회사소개**: 회사개요, 인사말, 경영진, 회사연혁, 조직도, 비전, 기업이념, 오시는 길
+2. **편집 및 윤리강령**: 편집규약, 언론윤리헌장, 취재보도준칙 윤리강령, 인터넷신문 윤리강령, 심의규정, 윤리 실천 노력
+3. **고충처리**: 고충처리 제도, 고충처리 운영 규정
+4. **독자위원회**: 독자위원회 규칙, 활동 내용(기사)
+5. **고객센터**: 기사제보, 구독신청, 광고문의, 불편신고, 독자투고, 제휴문의, 저작권문의
+6. **약관 및 정책**: 이용약관, 개인정보처리방침, 청소년보호정책, 저작권보호정책, 이메일무단수집거부
+
+## 외부 연동 (예정)
+- **구독 폼 → Google Sheets**: Google Apps Script 웹앱으로 fetch 전송
+- **우편번호 API**: 다음 우편번호 API (클라이언트 JS)
+- **지도 API**: 카카오맵 또는 네이버맵 JS SDK (회사소개 - 오시는 길)
+
+## Git 설정
+- **레포**: `fntimes/corporate` (public)
+- **계정**: user.name=`fntimes`, user.email=`swc@fntimes.com` (로컬 설정)
+- **인증**: 글로벌 credential store (`~/.git-credentials`)에 fntimes PAT 저장됨
+
+## 관련 프로젝트
+- `champions_board` (`/home/ubuntu/Projects/champions_board`): 원본 ERB 페이지가 있던 Rails 프로젝트. `/fntimes` 라우트에 이용약관/구독신청 ERB 존재.
+- `fntimes/docs`: summit 페이지 호스팅용 public 레포 (별개)
+
+## 주의사항
+- 외부 CDN 사용 금지 → 폰트 등 모든 리소스 로컬 포함
+- 인라인 `<style>`, `<script>` 사용 가능 (CSP 제약 없음, GitHub Pages 기본 설정)
+- header/footer/nav가 모든 페이지에 중복됨 → 페이지 추가 시 공통 부분 동기화 필요
