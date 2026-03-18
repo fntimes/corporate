@@ -7,7 +7,7 @@
 - **순수 정적 사이트**: HTML + CSS + JS (프레임워크 없음)
 - **호스팅**: GitHub Pages (GitHub Actions 자동 배포)
 - **커스텀 도메인**: `corporate.fntimes.com` (CNAME 설정 완료, DNS 미연결)
-- **폰트**: Pretendard (로컬 woff2, CDN 사용하지 않음)
+- **폰트**: Pretendard (CDN 사용) — GitHub Pages는 CSP 제약 없으므로 CDN이 유리 (레포 경량화, 캐싱 성능)
 
 ## 디렉토리 구조
 ```
@@ -19,7 +19,7 @@ corporate/
 │   └── style.css           → 공통 CSS (모든 페이지 공유)
 ├── js/
 │   └── main.js             → 공통 JS (메가메뉴, 모바일 nav)
-├── fonts/                  → Pretendard woff2 (5 weights)
+├── fonts/                  → (제거 예정, CDN 전환)
 ├── images/                 → header_logo, footer_logo, 1992
 ├── CNAME                   → 커스텀 도메인
 └── .github/workflows/
@@ -57,6 +57,5 @@ corporate/
 - `fntimes/docs`: summit 페이지 호스팅용 public 레포 (별개)
 
 ## 주의사항
-- 외부 CDN 사용 금지 → 폰트 등 모든 리소스 로컬 포함
-- 인라인 `<style>`, `<script>` 사용 가능 (CSP 제약 없음, GitHub Pages 기본 설정)
+- 외부 CDN 사용 가능 (GitHub Pages는 CSP 제약 없음). summit 프로젝트와 다름 — summit은 발주사 서버의 CSP 정책(`default-src 'self'`) 때문에 로컬 폰트/CSS 분리가 필요했음.
 - header/footer/nav가 모든 페이지에 중복됨 → 페이지 추가 시 공통 부분 동기화 필요
