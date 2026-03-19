@@ -1,24 +1,39 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const mega = document.getElementById('gnbMega');
-  const menuToggle = document.getElementById('menuToggle');
-  const menuClose = document.getElementById('menuClose');
-  const mobileNav = document.getElementById('mobileNav');
+  var gnb = document.getElementById('gnb');
+  var menuToggle = document.getElementById('menuToggle');
+  var menuClose = document.getElementById('menuClose');
+  var mobileNav = document.getElementById('mobileNav');
+  var gnbOverlay = document.getElementById('gnbOverlay');
+
+  function closeMenu() {
+    gnb.classList.remove('active');
+    gnbOverlay.classList.remove('active');
+    menuToggle.style.display = '';
+    menuClose.style.display = 'none';
+    document.body.style.overflow = '';
+  }
 
   menuToggle.addEventListener('click', function () {
     if (window.innerWidth <= 768) {
       mobileNav.classList.toggle('active');
     } else {
-      mega.classList.toggle('active');
-      menuToggle.style.display = mega.classList.contains('active') ? 'none' : '';
-      menuClose.style.display = mega.classList.contains('active') ? '' : 'none';
+      var isActive = gnb.classList.toggle('active');
+      gnbOverlay.classList.toggle('active', isActive);
+      menuToggle.style.display = isActive ? 'none' : '';
+      menuClose.style.display = isActive ? '' : 'none';
+      document.body.style.overflow = isActive ? 'hidden' : '';
     }
   });
 
-  menuClose.addEventListener('click', function () {
-    mega.classList.remove('active');
-    menuToggle.style.display = '';
-    menuClose.style.display = 'none';
-  });
+  menuClose.addEventListener('click', closeMenu);
+  gnbOverlay.addEventListener('click', closeMenu);
+
+  // 구독 희망일 최소값 설정 (오늘 이후)
+  var startDate = document.getElementById('startDate');
+  if (startDate) {
+    var today = new Date().toISOString().split('T')[0];
+    startDate.setAttribute('min', today);
+  }
 
   // 신청인 정보와 동일 체크
   var sameCheck = document.getElementById('sameAsApplicant');
@@ -57,7 +72,26 @@ document.addEventListener('DOMContentLoaded', function () {
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (!form.reportValidity()) return;
+
+      var checks = [
+        { id: 'privacyAgree', type: 'checkbox', msg: '개인정보보호를 위한 이용자 동의사항에 동의해주세요.' },
+        { id: 'appName', msg: '성명을 입력해주세요.' },
+        { id: 'appBirth', msg: '생년월일을 6자리로 입력해주세요.' },
+        { id: 'appPhone', msg: '전화번호를 올바르게 입력해주세요.' },
+        { id: 'appEmail', msg: '이메일을 올바르게 입력해주세요.' },
+        { id: 'zipCode', msg: '주소를 입력해주세요.' },
+        { id: 'startDate', msg: '구독 희망일을 선택해주세요.' }
+      ];
+
+      for (var i = 0; i < checks.length; i++) {
+        var el = document.getElementById(checks[i].id);
+        if (!el) continue;
+        if (checks[i].type === 'checkbox') {
+          if (!el.checked) { alert(checks[i].msg); el.focus(); return; }
+        } else if (!el.value || !el.validity.valid) {
+          alert(checks[i].msg); el.focus(); return;
+        }
+      }
 
       var submitBtn = document.getElementById('btnSubscribe');
       submitBtn.disabled = true;

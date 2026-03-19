@@ -19,12 +19,42 @@
       </a>
     <div class="gnb-wrap">
       <nav class="gnb" id="gnb">
-        <div class="gnb-item"><a href="#">회사소개</a></div>
-        <div class="gnb-item"><a href="#">편집 및 윤리강령</a></div>
-        <div class="gnb-item"><a href="#">고충처리</a></div>
-        <div class="gnb-item"><a href="#">독자위원회</a></div>
-        <div class="gnb-item"><a href="#">고객센터</a></div>
-        <div class="gnb-item"><a href="#">약관 및 정책</a></div>
+        <div class="gnb-item">
+          <a href="#">회사소개</a>
+          <div class="gnb-sub">
+            <a href="#">회사개요</a><a href="#">인사말</a><a href="#">경영진</a><a href="#">회사연혁</a><a href="#">조직도</a><a href="#">비전</a><a href="#">기업이념</a><a href="#">오시는 길</a>
+          </div>
+        </div>
+        <div class="gnb-item">
+          <a href="#">편집 및 윤리강령</a>
+          <div class="gnb-sub">
+            <a href="#">편집규약</a><a href="#">언론윤리헌장</a><a href="#">취재보도준칙 윤리강령</a><a href="#">인터넷신문 윤리강령</a><a href="#">인터넷신문자율심의기구<br>심의규정</a><a href="#">한국금융신문의 언론<br>윤리 실천을 위한 노력</a>
+          </div>
+        </div>
+        <div class="gnb-item">
+          <a href="#">고충처리</a>
+          <div class="gnb-sub">
+            <a href="#">고충처리 제도</a><a href="#">고충처리 운영 규정</a>
+          </div>
+        </div>
+        <div class="gnb-item">
+          <a href="#">독자위원회</a>
+          <div class="gnb-sub">
+            <a href="#">독자위원회 규칙</a><a href="#">활동 내용(기사)</a>
+          </div>
+        </div>
+        <div class="gnb-item">
+          <a href="#">고객센터</a>
+          <div class="gnb-sub">
+            <a href="#">기사제보</a><a href="/subscribe">구독신청</a><a href="#">광고문의</a><a href="#">불편신고</a><a href="#">독자투고</a><a href="#">제휴문의</a><a href="#">저작권문의</a>
+          </div>
+        </div>
+        <div class="gnb-item">
+          <a href="#" class="gnb-active">약관 및 정책</a>
+          <div class="gnb-sub">
+            <a href="/" class="mega-active">이용약관</a><a href="#">개인정보처리방침</a><a href="#">청소년보호정책</a><a href="#">저작권보호정책</a><a href="#">이메일무단수집거부</a>
+          </div>
+        </div>
       </nav>
       <div class="header-icons">
         <button class="header-icon-btn" id="menuToggle" aria-label="메뉴 열기">
@@ -38,28 +68,7 @@
       <span class="logo-sub"><img src="images/1992.png" alt="1992 창간" class="logo-sub-img"> <span>대한민국 최고 금융경제지</span></span>
     </div>
   </div>
-  <div class="gnb-mega" id="gnbMega">
-    <div class="gnb-mega-inner">
-      <div class="gnb-mega-col" data-col="0">
-        <a href="#">회사개요</a><a href="#">인사말</a><a href="#">경영진</a><a href="#">회사연혁</a><a href="#">조직도</a><a href="#">비전</a><a href="#">기업이념</a><a href="#">오시는 길</a>
-      </div>
-      <div class="gnb-mega-col" data-col="1">
-        <a href="#">편집규약</a><a href="#">언론윤리헌장</a><a href="#">취재보도준칙 윤리강령</a><a href="#">인터넷신문 윤리강령</a><a href="#">인터넷신문자율심의기구 심의규정</a><a href="#">한국금융신문의 언론<br>윤리 실천을 위한 노력</a>
-      </div>
-      <div class="gnb-mega-col" data-col="2">
-        <a href="#">고충처리 제도</a><a href="#">고충처리 운영 규정</a>
-      </div>
-      <div class="gnb-mega-col" data-col="3">
-        <a href="#">독자위원회 규칙</a><a href="#">활동 내용(기사)</a>
-      </div>
-      <div class="gnb-mega-col" data-col="4">
-        <a href="#">기사제보</a><a href="/subscribe">구독신청</a><a href="#">광고문의</a><a href="#">불편신고</a><a href="#">독자투고</a><a href="#">제휴문의</a><a href="#">저작권문의</a>
-      </div>
-      <div class="gnb-mega-col" data-col="5">
-        <a href="/" class="mega-active">이용약관</a><a href="#">개인정보처리방침</a><a href="#">청소년보호정책</a><a href="#">저작권보호정책</a><a href="#">이메일무단수집거부</a>
-      </div>
-    </div>
-  </div>
+<div class="gnb-overlay" id="gnbOverlay"></div>
 </header>
 
 <nav class="mobile-nav" id="mobileNav">
@@ -222,14 +231,14 @@
       <img src="images/footer_logo.png" alt="한국금융 KFT 미디어그룹" class="footer-logo-img">
     </div>
     <div class="footer-links">
-      <a href="/subscribe">구독신청</a><span class="sep">|</span>
+      <a href="/subscribe" class="mobile-show">구독신청</a><span class="sep">|</span>
       <a href="#">윤리강령</a><span class="sep">|</span>
       <a href="#">독자위원회</a><span class="sep">|</span>
       <a href="#">고충처리제도</a><span class="sep">|</span>
-      <a href="#">개인정보처리방침</a><span class="sep">|</span>
+      <a href="#" class="mobile-show">개인정보처리방침</a><span class="sep">|</span>
       <a href="#">청소년보호정책</a><span class="sep">|</span>
       <a href="#">채용정보</a><span class="sep">|</span>
-      <a href="#">이메일무단수집거부</a>
+      <a href="#" class="mobile-show">이메일무단수집거부</a>
     </div>
   </div>
   <div class="footer-body">
@@ -243,7 +252,7 @@
   </div>
   <div class="footer-copyright">
     <div class="footer-copyright-inner">
-      Copyright &copy; 2026 한국금융신문. All Rights Reserved. mail to bodo@fntimes.com
+      Copyright &copy; 2026 한국금융신문. All Rights Reserved.<br class="footer-copyright-br"> mail to bodo@fntimes.com
     </div>
   </div>
 </footer>
