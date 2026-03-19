@@ -238,24 +238,34 @@ ul, li { list-style: none; }
 .terms-section-body p { margin-bottom: 8px; }
 
 /* ===== Subscribe Form ===== */
-.form-privacy { margin-bottom: 48px; }
+.form-privacy {
+  background: #f4f4f4;
+  padding: 32px 0;
+}
+.form-privacy-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .form-privacy-title {
-  font-size: 18px;
+  font-size: 23px;
   font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 16px;
 }
 .form-privacy-box {
-  border: 1px solid #ccc;
+  background: #fff;
+  border: 1px solid #111;
+  border-radius: 4px;
   padding: 28px 24px;
-  margin-bottom: 24px;
-  font-size: 14px;
+  margin-bottom: 32px;
+  font-size: 19px;
   color: #333;
-  line-height: 2;
+  line-height: 1.6;
 }
 .form-privacy-agree {
+  display: block;
   text-align: center;
-  font-size: 15px;
+  font-size: 18px;
   color: #333;
 }
 .form-privacy-agree input[type="checkbox"] {
@@ -265,28 +275,30 @@ ul, li { list-style: none; }
   vertical-align: middle;
 }
 .form-section { margin-bottom: 48px; }
+.form-section-title-wrap {
+  margin-bottom: 32px;
+}
 .form-section-title {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: 700;
   color: #1a1a1a;
   text-align: center;
-  margin-bottom: 8px;
 }
 .form-section-desc {
-  font-size: 14px;
-  color: #888;
+  font-size: 18px;
+  color: #666;
   text-align: center;
   margin-bottom: 24px;
 }
 .form-section-divider {
   border: none;
-  border-bottom: 1px dashed #ccc;
-  margin-top: 32px;
+  border-bottom: 1.5px dashed #ccc;
+  margin-top: 52px;
 }
 .form-section-check {
   text-align: center;
-  margin-bottom: 24px;
-  font-size: 15px;
+  margin-bottom: 32px;
+  font-size: 17px;
   color: #333;
 }
 .form-section-check input[type="checkbox"] {
@@ -312,8 +324,8 @@ ul, li { list-style: none; }
   gap: 16px;
 }
 .form-label {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
   color: #1a1a1a;
   white-space: nowrap;
   min-width: 80px;
@@ -363,7 +375,7 @@ ul, li { list-style: none; }
   flex: 1;
 }
 .form-radio-group label {
-  font-size: 15px;
+  font-size: 18px;
   color: #333;
   cursor: pointer;
   display: flex;
@@ -375,7 +387,7 @@ ul, li { list-style: none; }
   padding: 12px 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 18px;
   font-family: inherit;
   outline: none;
   background: #fff;
@@ -387,10 +399,10 @@ ul, li { list-style: none; }
 .form-submit-area { text-align: center; margin-top: 48px; }
 .btn-subscribe {
   display: inline-block;
-  padding: 20px 100px;
+  padding: 12px 120px;
   background: #1a1a1a;
   color: #fff;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
   border: none;
   cursor: pointer;
@@ -398,7 +410,7 @@ ul, li { list-style: none; }
   transition: background 0.2s;
 }
 .btn-subscribe:hover { background: #333; }
-.form-submit-note { margin-top: 16px; font-size: 16px; color: #555; }
+.form-submit-note { margin-top: 40px; font-size: 21px; font-weight: 500; color: #555; }
 
 /* ===== Footer ===== */
 .site-footer {

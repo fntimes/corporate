@@ -93,20 +93,14 @@
   <h1 class="hero-banner-title">구독신청</h1>
 </section>
 
-<nav class="sub-nav">
-  <div class="sub-nav-inner">
-    <a href="#">기사제보</a>
-    <a href="/subscribe" class="active">구독신청</a>
-    <a href="#">광고문의</a>
-    <a href="#">불편신고</a>
-    <a href="#">독자투고</a>
-    <a href="#">제휴문의</a>
-    <a href="#">저작권문의</a>
+<nav class="breadcrumb-bar">
+  <div class="breadcrumb-inner">
+    <span class="breadcrumb-trail">홈 <svg class="breadcrumb-chevron" width="7" height="12" viewBox="0 0 7 12"><path d="M1 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg> 고객센터 <svg class="breadcrumb-chevron" width="7" height="12" viewBox="0 0 7 12"><path d="M1 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg> 구독신청</span>
   </div>
 </nav>
 
-<main class="main-content">
-  <div class="form-privacy">
+<div class="form-privacy">
+  <div class="form-privacy-inner">
     <p class="form-privacy-title">개인정보보호를 위한 이용자 동의사항</p>
     <div class="form-privacy-box">
       <p>구독신청 등을 희망하는 기업 및 개인을 대상으로 아래와 같이 개인정보를 수집하고 있습니다.</p>
@@ -119,9 +113,15 @@
       <input type="checkbox"> 개인정보보호를 위한 이용자 동의사항을 확인하였습니다.
     </label>
   </div>
+</div>
 
+<main class="main-content">
   <div class="form-section">
-    <h2 class="form-section-title">신청인 정보</h2>
+
+    <div class="form-section-title-wrap">
+      <h2 class="form-section-title">신청인 정보</h2>
+    </div>
+
     <div class="form-row-half">
       <div class="form-field">
         <label class="form-label">성명<span class="required">*</span></label>
@@ -146,8 +146,11 @@
   </div>
 
   <div class="form-section">
-    <h2 class="form-section-title">우편수취인 정보</h2>
-    <p class="form-section-desc">실제 신문을 받아보실 분의 정보를 입력하세요.</p>
+    <div class="form-section-title-wrap">
+      <h2 class="form-section-title">우편수취인 정보</h2>
+      <p class="form-section-desc">실제 신문을 받아보실 분의 정보를 입력하세요.</p>
+    </div>
+
     <div class="form-section-check">
       <label><input type="checkbox"> 신청인 정보와 동일</label>
     </div>
@@ -184,8 +187,11 @@
   </div>
 
   <div class="form-section">
-    <h2 class="form-section-title">구독료</h2>
-    <p class="form-section-desc">구독 기간과 부수를 선택하세요.</p>
+    <div class="form-section-title-wrap">
+      <h2 class="form-section-title">구독료</h2>
+      <p class="form-section-desc">실제 신문을 받아보실 분의 정보를 입력하세요.</p>
+    </div>
+
     <div class="form-row">
       <div class="form-field">
         <label class="form-label">구독기간<span class="required">*</span></label>
@@ -225,7 +231,7 @@
 
     <div class="form-submit-area">
       <button type="button" class="btn-subscribe" id="btnSubscribe">구독신청</button>
-      <p class="form-submit-note">구독관련문의 : 02)773 - 6300</p>
+      <p class="form-submit-note">📞 구독관련문의 : 02)773 - 6300</p>
     </div>
   </div>
 </main>
@@ -236,13 +242,13 @@
       <img src="../images/footer_logo.png" alt="한국금융 KFT 미디어그룹" class="footer-logo-img">
     </div>
     <div class="footer-links">
-      <a href="/subscribe">구독신청</a>
-      <a href="#">윤리강령</a>
-      <a href="#">독자위원회</a>
-      <a href="#">고충처리제도</a>
-      <a href="#">개인정보처리방침</a>
-      <a href="#">청소년보호정책</a>
-      <a href="#">채용정보</a>
+      <a href="/subscribe">구독신청</a><span class="sep">|</span>
+      <a href="#">윤리강령</a><span class="sep">|</span>
+      <a href="#">독자위원회</a><span class="sep">|</span>
+      <a href="#">고충처리제도</a><span class="sep">|</span>
+      <a href="#">개인정보처리방침</a><span class="sep">|</span>
+      <a href="#">청소년보호정책</a><span class="sep">|</span>
+      <a href="#">채용정보</a><span class="sep">|</span>
       <a href="#">이메일무단수집거부</a>
     </div>
   </div>
