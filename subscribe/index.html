@@ -4,6 +4,7 @@
     <title>구독신청 - 한국금융신문</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
     <link rel="stylesheet" href="../css/style.css">
   </head>
@@ -34,7 +35,7 @@
     </div>
     </div>
     <div class="header-sub-line">
-      <span class="logo-sub"><img src="../images/1992.png" alt="1992 창간" style="height: 20px; width: auto;"> <span>대한민국 최고 금융경제지</span></span>
+      <span class="logo-sub"><img src="../images/1992.png" alt="1992 창간" class="logo-sub-img"> <span>대한민국 최고 금융경제지</span></span>
     </div>
   </div>
   <div class="gnb-mega" id="gnbMega">
@@ -116,6 +117,7 @@
 </div>
 
 <main class="main-content">
+<form id="subscribeForm" novalidate>
   <div class="form-section">
 
     <div class="form-section-title-wrap">
@@ -125,21 +127,21 @@
     <div class="form-row-half">
       <div class="form-field">
         <label class="form-label">성명<span class="required">*</span></label>
-        <input type="text" class="form-input" placeholder="홍길동">
+        <input type="text" class="form-input" id="appName" placeholder="홍길동" required>
       </div>
       <div class="form-field">
         <label class="form-label">생년월일<span class="required">*</span></label>
-        <input type="text" class="form-input" placeholder="예시: 870116(6자 입력)">
+        <input type="text" class="form-input" id="appBirth" placeholder="예시: 870116(6자 입력)" required pattern="\d{6}">
       </div>
     </div>
     <div class="form-row-half">
       <div class="form-field">
         <label class="form-label">전화번호<span class="required">*</span></label>
-        <input type="tel" class="form-input" placeholder="010-1234-5678">
+        <input type="tel" class="form-input" id="appPhone" placeholder="010-1234-5678" required pattern="01[016789]-?\d{3,4}-?\d{4}">
       </div>
       <div class="form-field">
         <label class="form-label">이메일<span class="required">*</span></label>
-        <input type="email" class="form-input" placeholder="email@naver.com">
+        <input type="email" class="form-input" id="appEmail" placeholder="email@naver.com" required>
       </div>
     </div>
     <hr class="form-section-divider">
@@ -152,34 +154,37 @@
     </div>
 
     <div class="form-section-check">
-      <label><input type="checkbox"> 신청인 정보와 동일</label>
+      <label><input type="checkbox" id="sameAsApplicant"> 신청인 정보와 동일</label>
     </div>
-    <div class="form-row">
+    <div class="form-row-half">
       <div class="form-field">
         <label class="form-label">수취인명</label>
-        <input type="text" class="form-input" placeholder="홍길동">
+        <input type="text" class="form-input" id="rcvName" placeholder="홍길동">
       </div>
     </div>
     <div class="form-row-half">
       <div class="form-field">
         <label class="form-label">전화번호</label>
-        <input type="tel" class="form-input" placeholder="010-1234-5678">
+        <input type="tel" class="form-input" id="rcvPhone" placeholder="010-1234-5678" pattern="01[016789]-?\d{3,4}-?\d{4}">
       </div>
       <div class="form-field">
         <label class="form-label">이메일</label>
-        <input type="email" class="form-input" placeholder="email@naver.com">
+        <input type="email" class="form-input" id="rcvEmail" placeholder="email@naver.com">
       </div>
     </div>
     <div class="form-row">
-      <div class="form-field" style="align-items: flex-start;">
-        <label class="form-label" style="padding-top: 12px;">주소<span class="required">*</span></label>
-        <div style="flex: 1;">
+      <div class="form-field form-field--addr-top">
+        <label class="form-label">주소<span class="required">*</span></label>
+        <div class="form-address-wrap">
           <div class="form-address-row">
-            <input type="text" class="form-input form-input--zip" id="zipCode" placeholder="우편번호" readonly>
+            <input type="text" class="form-input form-input--zip" id="zipCode" placeholder="우편번호" readonly required>
             <input type="text" class="form-input form-input--addr" id="baseAddr" placeholder="기본주소" readonly>
             <button type="button" class="btn-search" id="btnAddrSearch">검색</button>
           </div>
-          <input type="text" class="form-input" id="detailAddr" placeholder="상세주소" style="width: 70%;">
+          <div class="form-address-detail-row">
+            <div class="form-address-detail-spacer"></div>
+            <input type="text" class="form-input form-input--detail-addr" id="detailAddr" placeholder="상세주소">
+          </div>
         </div>
       </div>
     </div>
@@ -196,7 +201,7 @@
       <div class="form-field">
         <label class="form-label">구독기간<span class="required">*</span></label>
         <div class="form-radio-group">
-          <label><input type="radio" name="period" value="1"> 1개월</label>
+          <label><input type="radio" name="period" value="1" checked> 1개월</label>
           <label><input type="radio" name="period" value="3"> 3개월</label>
           <label><input type="radio" name="period" value="6"> 6개월</label>
           <label><input type="radio" name="period" value="12"> 1년(12개월)</label>
@@ -206,10 +211,12 @@
     <div class="form-row">
       <div class="form-field">
         <label class="form-label">구독부수<span class="required">*</span></label>
-        <select class="form-select">
-          <option>1부</option>
-          <option>2부</option>
-          <option>3부</option>
+        <select class="form-select" id="copies">
+          <option value="1">1부</option>
+          <option value="5">5부</option>
+          <option value="10">10부</option>
+          <option value="50">50부</option>
+          <option value="100">100부</option>
         </select>
         <span class="form-inline-note">12,000원/ 1개월(주 1회 발행)</span>
       </div>
@@ -217,23 +224,24 @@
     <div class="form-row">
       <div class="form-field">
         <label class="form-label">구독료</label>
-        <span class="form-price-value">144,000원</span>
+        <span class="form-price-value" id="totalPrice">12,000원</span>
         <span class="form-price-note">(구독료는 지로 납부만 가능합니다)</span>
       </div>
     </div>
     <div class="form-row">
       <div class="form-field">
         <label class="form-label">구독 희망일<span class="required">*</span></label>
-        <input type="date" class="form-input" style="width: 240px; flex: none;">
+        <input type="date" class="form-input form-input--date" id="startDate" required>
       </div>
     </div>
     <hr class="form-section-divider">
 
     <div class="form-submit-area">
-      <button type="button" class="btn-subscribe" id="btnSubscribe">구독신청</button>
+      <button type="submit" class="btn-subscribe" id="btnSubscribe">구독신청</button>
       <p class="form-submit-note">📞 구독관련문의 : 02)773 - 6300</p>
     </div>
   </div>
+</form>
 </main>
 
 <footer class="site-footer">
@@ -268,6 +276,7 @@
   </div>
 </footer>
 
+<script src="//t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="../js/main.js"></script>
   </body>
 </html>
