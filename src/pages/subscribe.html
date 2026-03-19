@@ -1,0 +1,154 @@
+---
+title: 구독신청
+heroTitle: 구독신청
+breadcrumbCategory: 고객센터
+breadcrumbPage: 구독신청
+gnbActive: 고객센터
+megaActiveHref: /subscribe
+extraScripts: <script src="//t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+outputPath: subscribe/index.html
+---
+<form id="subscribeForm" novalidate>
+
+<div class="form-privacy">
+  <div class="form-privacy-inner">
+    <p class="form-privacy-title">개인정보보호를 위한 이용자 동의사항</p>
+    <div class="form-privacy-box">
+      <p>구독신청 등을 희망하는 기업 및 개인을 대상으로 아래와 같이 개인정보를 수집하고 있습니다.</p>
+      <br>
+      <p>1. 수집 개인정보 항목</p>
+      <p>&nbsp; - 이름, 이메일, 전화번호</p>
+      <p>&nbsp; - 수취인정보(수취인명, 이메일, 전화번호, 주소)</p>
+    </div>
+    <label class="form-privacy-agree">
+      <input type="checkbox" id="privacyAgree" required> 개인정보보호를 위한 이용자 동의사항을 확인하였습니다.
+    </label>
+  </div>
+</div>
+
+<main class="main-content">
+  <div class="form-section">
+
+    <div class="form-section-title-wrap">
+      <h2 class="form-section-title">신청인 정보</h2>
+    </div>
+
+    <div class="form-row-half">
+      <div class="form-field">
+        <label class="form-label">성명<span class="required">*</span></label>
+        <input type="text" class="form-input" id="appName" placeholder="홍길동" required>
+      </div>
+      <div class="form-field">
+        <label class="form-label">생년월일<span class="required">*</span></label>
+        <input type="text" class="form-input" id="appBirth" placeholder="예시: 870116(6자 입력)" required pattern="\d{6}">
+      </div>
+    </div>
+    <div class="form-row-half">
+      <div class="form-field">
+        <label class="form-label">전화번호<span class="required">*</span></label>
+        <input type="tel" class="form-input" id="appPhone" placeholder="010-1234-5678" required pattern="01[016789]-?\d{3,4}-?\d{4}">
+      </div>
+      <div class="form-field">
+        <label class="form-label">이메일<span class="required">*</span></label>
+        <input type="email" class="form-input" id="appEmail" placeholder="email@naver.com" required>
+      </div>
+    </div>
+    <hr class="form-section-divider">
+  </div>
+
+  <div class="form-section">
+    <div class="form-section-title-wrap">
+      <h2 class="form-section-title">우편수취인 정보</h2>
+      <p class="form-section-desc">실제 신문을 받아보실 분의 정보를 입력하세요.</p>
+    </div>
+
+    <div class="form-section-check">
+      <label><input type="checkbox" id="sameAsApplicant"> 신청인 정보와 동일</label>
+    </div>
+    <div class="form-row-half">
+      <div class="form-field">
+        <label class="form-label">수취인명</label>
+        <input type="text" class="form-input" id="rcvName" placeholder="홍길동">
+      </div>
+    </div>
+    <div class="form-row-half">
+      <div class="form-field">
+        <label class="form-label">전화번호</label>
+        <input type="tel" class="form-input" id="rcvPhone" placeholder="010-1234-5678" pattern="01[016789]-?\d{3,4}-?\d{4}">
+      </div>
+      <div class="form-field">
+        <label class="form-label">이메일</label>
+        <input type="email" class="form-input" id="rcvEmail" placeholder="email@naver.com">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field form-field--addr-top">
+        <label class="form-label">주소<span class="required">*</span></label>
+        <div class="form-address-wrap">
+          <div class="form-address-row">
+            <input type="text" class="form-input form-input--zip" id="zipCode" placeholder="우편번호" readonly required>
+            <input type="text" class="form-input form-input--addr" id="baseAddr" placeholder="기본주소" readonly>
+            <button type="button" class="btn-search" id="btnAddrSearch">검색</button>
+          </div>
+          <div class="form-address-detail-row">
+            <div class="form-address-detail-spacer"></div>
+            <input type="text" class="form-input form-input--detail-addr" id="detailAddr" placeholder="상세주소">
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="form-section-divider">
+  </div>
+
+  <div class="form-section">
+    <div class="form-section-title-wrap">
+      <h2 class="form-section-title">구독료</h2>
+      <p class="form-section-desc">실제 신문을 받아보실 분의 정보를 입력하세요.</p>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label">구독기간<span class="required">*</span></label>
+        <div class="form-radio-group">
+          <label><input type="radio" name="period" value="1" checked> 1개월</label>
+          <label><input type="radio" name="period" value="3"> 3개월</label>
+          <label><input type="radio" name="period" value="6"> 6개월</label>
+          <label><input type="radio" name="period" value="12"> 1년(12개월)</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label">구독부수<span class="required">*</span></label>
+        <select class="form-select" id="copies">
+          <option value="1">1부</option>
+          <option value="5">5부</option>
+          <option value="10">10부</option>
+          <option value="50">50부</option>
+          <option value="100">100부</option>
+        </select>
+        <span class="form-inline-note">12,000원/ 1개월(주 1회 발행)</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label">구독료</label>
+        <span class="form-price-value" id="totalPrice">12,000원</span>
+        <span class="form-price-note">(구독료는 지로 납부만 가능합니다)</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label">구독 희망일<span class="required">*</span></label>
+        <input type="date" class="form-input form-input--date" id="startDate" required>
+      </div>
+    </div>
+    <hr class="form-section-divider">
+
+    <div class="form-submit-area">
+      <button type="submit" class="btn-subscribe" id="btnSubscribe">구독신청</button>
+      <p class="form-submit-note">📞 구독관련문의 : 02)773 - 6300</p>
+    </div>
+  </div>
+</form>
+</main>

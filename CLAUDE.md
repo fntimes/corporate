@@ -12,18 +12,35 @@
 ## 디렉토리 구조
 ```
 corporate/
-├── index.html              → / (이용약관)
-├── subscribe/
-│   └── index.html          → /subscribe (구독신청)
+├── src/
+│   ├── partials/           → 공통 HTML 파셜
+│   │   ├── head.html       → doctype, meta, CSS 링크
+│   │   ├── header.html     → GNB + 사이트맵 (active 클래스 자동 주입)
+│   │   ├── mobile-nav.html → 모바일 내비게이션
+│   │   ├── hero.html       → 히어로 배너 ({{heroTitle}})
+│   │   ├── breadcrumb.html → breadcrumb ({{breadcrumbCategory}}, {{breadcrumbPage}})
+│   │   ├── footer.html     → 푸터
+│   │   └── scripts.html    → JS 로드 ({{extraScripts}})
+│   └── pages/              → 페이지 템플릿 (front-matter + 본문)
+│       ├── index.html      → / (이용약관)
+│       └── subscribe.html  → /subscribe (구독신청)
 ├── css/
 │   └── style.css           → 공통 CSS (모든 페이지 공유)
 ├── js/
-│   └── main.js             → 공통 JS (메가메뉴, 모바일 nav)
-├── images/                 → header_logo, footer_logo, 1992
+│   └── main.js             → 공통 JS (메가메뉴, 모바일 nav, 폼)
+├── images/                 → header_logo, footer_logo, 1992, bg
+├── build.js                → 빌드 스크립트 (Node.js, 의존성 없음)
+├── package.json            → npm run build
 ├── CNAME                   → 커스텀 도메인
+├── dist/                   → 빌드 출력 (gitignore, GitHub Actions에서 생성)
 └── .github/workflows/
-    └── deploy.yml          → GitHub Pages 배포
+    └── deploy.yml          → Node.js 빌드 → GitHub Pages 배포
 ```
+
+## 빌드
+- `npm run build` → `src/pages/`의 템플릿을 `src/partials/`와 조합하여 `dist/`에 출력
+- 페이지 추가: `src/pages/`에 front-matter + 본문 HTML 파일 추가
+- 헤더/푸터 수정: `src/partials/`의 해당 파일만 수정하면 전체 반영
 
 ## URL 규칙
 - 폴더 기반 URL: `/about` → `about/index.html`

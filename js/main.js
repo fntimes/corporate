@@ -8,14 +8,18 @@ document.addEventListener('DOMContentLoaded', function () {
   function closeMenu() {
     gnb.classList.remove('active');
     gnbOverlay.classList.remove('active');
+    mobileNav.classList.remove('active');
     menuToggle.style.display = '';
     menuClose.style.display = 'none';
     document.body.style.overflow = '';
   }
 
   menuToggle.addEventListener('click', function () {
-    if (window.innerWidth <= 768) {
-      mobileNav.classList.toggle('active');
+    if (window.innerWidth <= 1024) {
+      var isOpen = mobileNav.classList.toggle('active');
+      menuToggle.style.display = isOpen ? 'none' : '';
+      menuClose.style.display = isOpen ? '' : 'none';
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     } else {
       var isActive = gnb.classList.toggle('active');
       gnbOverlay.classList.toggle('active', isActive);
