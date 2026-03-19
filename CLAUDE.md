@@ -19,7 +19,6 @@ corporate/
 │   └── style.css           → 공통 CSS (모든 페이지 공유)
 ├── js/
 │   └── main.js             → 공통 JS (메가메뉴, 모바일 nav)
-├── fonts/                  → (제거 예정, CDN 전환)
 ├── images/                 → header_logo, footer_logo, 1992
 ├── CNAME                   → 커스텀 도메인
 └── .github/workflows/
@@ -53,7 +52,6 @@ corporate/
 - **인증**: 글로벌 credential store (`~/.git-credentials`)에 fntimes PAT 저장됨
 
 ## 관련 프로젝트
-- `champions_board` (`/home/ubuntu/Projects/champions_board`): 원본 ERB 페이지가 있던 Rails 프로젝트. `/fntimes` 라우트에 이용약관/구독신청 ERB 존재.
 - `fntimes/docs`: summit 페이지 호스팅용 public 레포 (별개)
 
 ## 주의사항
