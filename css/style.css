@@ -694,6 +694,187 @@ ul, li { list-style: none; }
   border-radius: 50%;
 }
 
+/* ===== About Organization ===== */
+.about-org {
+  background: #d5e7ff;
+  padding: 48px 0 64px;
+  text-align: center;
+}
+.about-org-inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.about-org-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.about-org-subtitle {
+  font-size: 29px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 48px;
+  letter-spacing: -0.5px;
+}
+
+/* Org Chart */
+.org-chart {
+  position: relative;
+  width: 1024px;
+  height: 560px;
+  margin: 0 auto;
+}
+.org-chart svg.connectors {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.connector-line {
+  fill: none;
+  stroke: #5A8AB4;
+  stroke-width: 1.8;
+  opacity: 0.5;
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+  animation: drawLine 0.6s ease forwards;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+.org-node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 28px;
+  border-radius: 26px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14.5px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+  z-index: 1;
+  cursor: default;
+  opacity: 0;
+  transform: translateY(8px) scale(0.95);
+  animation: nodeAppear 0.4s ease forwards;
+  animation-delay: var(--delay, 0s);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.org-node:hover {
+  transform: translateY(-2px) scale(1.04) !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+  z-index: 10;
+}
+@keyframes nodeAppear { to { opacity: 1; transform: translateY(0) scale(1); } }
+.org-node.lg { padding: 13px 36px; font-size: 16px; border-radius: 28px; }
+.org-node.sm { padding: 9px 20px; font-size: 13px; border-radius: 22px; font-weight: 500; }
+.c-navy    { background: linear-gradient(135deg, #1B3A5C, #122B45); }
+.c-navy-m  { background: linear-gradient(135deg, #2B6490, #1B3A5C); }
+.c-navy-l  { background: linear-gradient(135deg, #3D7FA8, #2B6490); }
+.c-brown   { background: linear-gradient(135deg, #9A7B2E, #7A6118); }
+.c-gold    { background: linear-gradient(135deg, #B89530, #7A6118); }
+.c-purple  { background: linear-gradient(135deg, #6B35A8, #522B88); }
+.c-purple-l{ background: linear-gradient(135deg, #8550C0, #6B35A8); }
+.c-teal    { background: linear-gradient(135deg, #1A8E8E, #157272); }
+.c-teal-l  { background: linear-gradient(135deg, #22A8A8, #1A8E8E); }
+
+/* ===== About Vision ===== */
+.about-vision {
+  padding: 0;
+  text-align: center;
+}
+.about-vision-video-wrap {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 420px;
+  overflow: hidden;
+}
+.about-vision-header {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  max-width: 1024px;
+  width: 100%;
+  padding: 48px 24px 0;
+}
+.about-vision-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.about-vision-subtitle {
+  font-size: 29px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: -0.5px;
+}
+.about-vision-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about-vision-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.about-vision-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 1024px;
+  margin: -80px auto 0;
+  position: relative;
+  z-index: 1;
+  padding: 0 0 64px;
+}
+.about-vision-card {
+  background: #d5e7ff;
+  padding: 40px 24px 24px;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+.about-vision-card:nth-child(2),
+.about-vision-card:nth-child(4) {
+  background: #bbd0ed;
+}
+.about-vision-card-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 12px;
+  border-bottom: 4px solid var(--border-strong);
+}
+.about-vision-card-heading {
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 2px dashed var(--border-strong);
+}
+.about-vision-card-body {
+  font-size: 15px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  letter-spacing: -0.5px;
+}
+
 /* ===== About Sections ===== */
 .about-section {
   padding: 64px 0;
