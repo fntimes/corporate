@@ -90,7 +90,7 @@ ul, li { list-style: none; }
 .gnb {
   display: flex;
   align-items: center;
-  gap: 68px;
+  gap: 80px;
 }
 .gnb-item {
   position: relative;
@@ -140,6 +140,7 @@ ul, li { list-style: none; }
   padding: 16px 0;
   min-width: 160px;
   z-index: 200;
+  letter-spacing: -0.5px;
 }
 .gnb-overlay {
   display: none;
@@ -368,7 +369,7 @@ ul, li { list-style: none; }
   text-align: center;
 }
 .about-slogan-inner {
-  max-width: 1024px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 .about-slogan-text {
@@ -444,7 +445,7 @@ ul, li { list-style: none; }
   padding: 48px 0 60px;
 }
 .about-greeting-inner {
-  max-width: 1024px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 .about-greeting-title {
@@ -482,7 +483,7 @@ ul, li { list-style: none; }
   margin-bottom: 64px;
 }
 .about-greeting-body {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   color: var(--text-body);
   line-height: 1.6;
@@ -549,7 +550,7 @@ ul, li { list-style: none; }
 .about-history-inner {
   position: relative;
   z-index: 1;
-  max-width: 1024px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 .about-history-title {
@@ -697,11 +698,11 @@ ul, li { list-style: none; }
 /* ===== About Organization ===== */
 .about-org {
   background: #d5e7ff;
-  padding: 48px 0 64px;
+  padding: 48px 0 0;
   text-align: center;
 }
 .about-org-inner {
-  max-width: 1024px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 .about-org-title {
@@ -724,7 +725,7 @@ ul, li { list-style: none; }
 /* Org Chart */
 .org-chart {
   position: relative;
-  width: 1024px;
+  width: var(--max-width);
   height: 560px;
   margin: 0 auto;
 }
@@ -792,7 +793,7 @@ ul, li { list-style: none; }
 }
 .about-vision-video-wrap {
   position: relative;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   height: 420px;
   overflow: hidden;
@@ -803,7 +804,7 @@ ul, li { list-style: none; }
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
-  max-width: 1024px;
+  max-width: var(--max-width);
   width: 100%;
   padding: 48px 24px 0;
 }
@@ -836,15 +837,15 @@ ul, li { list-style: none; }
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  max-width: 1024px;
-  margin: -80px auto 0;
+  max-width: var(--max-width);
+  margin: -100px auto 0;
   position: relative;
   z-index: 1;
   padding: 0 0 64px;
 }
 .about-vision-card {
   background: #d5e7ff;
-  padding: 40px 24px 24px;
+  padding: 40px 36px 36px;
   text-align: left;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
@@ -860,19 +861,20 @@ ul, li { list-style: none; }
   border-bottom: 4px solid var(--border-strong);
 }
 .about-vision-card-heading {
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 500;
   color: var(--text-primary);
   line-height: 1.4;
   margin-bottom: 12px;
   padding-bottom: 12px;
   border-bottom: 2px dashed var(--border-strong);
+  letter-spacing: -0.5px;
 }
 .about-vision-card-body {
   font-size: 15px;
   color: var(--text-primary);
   line-height: 1.5;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.7px;
 }
 
 /* ===== About Philosophy ===== */
@@ -896,9 +898,8 @@ ul, li { list-style: none; }
 .about-philosophy-inner {
   position: relative;
   z-index: 1;
-  max-width: 1024px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 24px;
 }
 .about-philosophy-title {
   font-size: 36px;
@@ -948,9 +949,8 @@ ul, li { list-style: none; }
   padding: 64px 0;
 }
 .about-location-inner {
-  max-width: 1024px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 24px;
 }
 .about-location-title {
   font-size: 36px;
@@ -1032,7 +1032,7 @@ ul, li { list-style: none; }
   min-height: 60vh;
 }
 .main-content--narrow {
-  max-width: 1024px;
+  max-width: var(--max-width);
 }
 
 /* ===== Terms Page ===== */
