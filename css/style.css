@@ -426,7 +426,7 @@ ul, li { list-style: none; }
 .about-info-table tr th:first-child { border-left: none; }
 .about-info-table tr td:last-child { border-right: none; }
 .about-info-table th {
-  background: #123972;
+  background: #123971;
   color: #fff;
   white-space: nowrap;
   white-space: nowrap;
@@ -624,7 +624,7 @@ ul, li { list-style: none; }
   left: 0;
   right: 0;
   height: 1.5px;
-  background: #123972;
+  background: #123971;
   z-index: 2;
   pointer-events: none;
   transition: left 0.3s, right 0.3s;
@@ -661,7 +661,7 @@ ul, li { list-style: none; }
   transform: translateX(-50%);
   width: 15px;
   height: 15px;
-  background: #123972;
+  background: #123971;
   border-radius: 50%;
   z-index: 3;
 }
@@ -873,6 +873,135 @@ ul, li { list-style: none; }
   color: var(--text-primary);
   line-height: 1.5;
   letter-spacing: -0.5px;
+}
+
+/* ===== About Philosophy ===== */
+.about-philosophy {
+  position: relative;
+  overflow: hidden;
+  padding: 64px 0;
+}
+.about-philosophy-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about-philosophy-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+}
+.about-philosophy-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.about-philosophy-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.about-philosophy-subtitle {
+  font-size: 29px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 48px;
+  letter-spacing: -0.5px;
+}
+.about-philosophy-items {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.about-philosophy-item {
+  padding-bottom: 24px;
+  border-bottom: 1px dashed #fff;
+}
+.about-philosophy-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.about-philosophy-item-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #3190cf;
+  margin-bottom: 4px;
+}
+.about-philosophy-item-body {
+  font-size: 18px;
+  color: #fff;
+  line-height: 1.5;
+  letter-spacing: -0.5px;
+}
+
+/* ===== About Location ===== */
+.about-location {
+  background: #123971;
+  padding: 64px 0;
+}
+.about-location-inner {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.about-location-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.about-location-subtitle {
+  font-size: 29px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 48px;
+  letter-spacing: -0.5px;
+}
+.about-location-map {
+  width: 100%;
+  height: 480px;
+  background: #fff;
+  margin-bottom: 60px;
+  border-radius: 8px;
+}
+.about-location-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+}
+.about-location-table th,
+.about-location-table td {
+  padding: 14px 20px;
+  font-size: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: left;
+  border-bottom: 1px solid #fff;
+}
+.about-location-table th {
+  color: #fff;
+  font-weight: 500;
+  width: 300px;
+  text-align: center;
+  background: #100f0d;
+}
+.about-location-table td {
+  color: #fff;
+}
+.about-location-table tr:last-child th,
+.about-location-table tr:last-child td {
+  border-bottom: none;
 }
 
 /* ===== About Sections ===== */
@@ -1153,7 +1282,7 @@ ul, li { list-style: none; }
 .footer-top {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 24px 0 0;
+  padding: 36px 0 0;
   display: flex;
   align-items: center;
   gap: 32px;
@@ -1191,7 +1320,7 @@ ul, li { list-style: none; }
 .footer-info { font-size: 15px; line-height: 1.9; color: var(--text-secondary); }
 .footer-info p { margin-bottom: 0; }
 .footer-copyright {
-  padding: 20px 0;
+  padding: 20px 0 36px;
 }
 .footer-copyright-inner {
   max-width: var(--max-width);
