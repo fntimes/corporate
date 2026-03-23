@@ -439,6 +439,30 @@ ul, li { list-style: none; }
 .about-info-table { table-layout: fixed; }
 .about-info-table .col-th { width: 160px; }
 
+/* About Orgs */
+.about-orgs {
+  margin-top: 60px;
+  text-align: left;
+}
+.about-orgs-title {
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  padding-bottom: 4px;
+  border-bottom: 3px solid var(--border-strong);
+}
+.about-orgs-body {
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--text-body);
+  line-height: 1.5;
+  margin-bottom: 36px;
+}
+.about-orgs-img {
+  width: 100%;
+}
+
 /* ===== About Greeting ===== */
 .about-greeting {
   background: var(--bg-section);
@@ -643,7 +667,7 @@ ul, li { list-style: none; }
   background: #fff;
   border-radius: 8px;
   padding: 16px;
-  min-height: 320px;
+  height: 400px;
 }
 .history-card-year {
   font-size: 26px;
@@ -671,7 +695,7 @@ ul, li { list-style: none; }
   padding: 0;
 }
 .history-card-list li {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
   color: var(--text-primary);
   padding: 8px 0;
