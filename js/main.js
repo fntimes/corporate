@@ -32,6 +32,58 @@ document.addEventListener('DOMContentLoaded', function () {
   menuClose.addEventListener('click', closeMenu);
   gnbOverlay.addEventListener('click', closeMenu);
 
+  // 연혁 캐러셀
+  var historyTabs = document.querySelectorAll('.history-tab');
+  var historyCards = document.querySelectorAll('.history-card');
+  var track = document.querySelector('.history-cards-track');
+  var prevBtn = document.querySelector('.history-arrow--prev');
+  var nextBtn = document.querySelector('.history-arrow--next');
+
+  if (historyTabs.length && track) {
+    var allCards = Array.from(historyCards);
+    var currentIndex = 0;
+    var viewport = document.getElementById('historyViewport');
+
+    function updateCarousel() {
+      var cardWidth = allCards.length > 0 ? allCards[0].offsetWidth + 24 : 0;
+      track.style.transform = 'translateX(-' + (currentIndex * cardWidth) + 'px)';
+      var hasPrev = currentIndex > 0;
+      var hasNext = currentIndex < allCards.length - 2;
+      prevBtn.disabled = !hasPrev;
+      nextBtn.disabled = !hasNext;
+      viewport.classList.toggle('no-prev', !hasPrev);
+      viewport.classList.toggle('no-next', !hasNext);
+
+      // 현재 보이는 카드의 그룹으로 탭 활성화
+      var activeGroup = allCards[currentIndex].dataset.group;
+      historyTabs.forEach(function (t) {
+        t.classList.toggle('active', t.dataset.group === activeGroup);
+      });
+    }
+
+    historyTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var group = tab.dataset.group;
+        for (var i = 0; i < allCards.length; i++) {
+          if (allCards[i].dataset.group === group) {
+            currentIndex = i;
+            break;
+          }
+        }
+        updateCarousel();
+      });
+    });
+
+    prevBtn.addEventListener('click', function () {
+      if (currentIndex > 0) { currentIndex--; updateCarousel(); }
+    });
+    nextBtn.addEventListener('click', function () {
+      if (currentIndex < allCards.length - 2) { currentIndex++; updateCarousel(); }
+    });
+
+    updateCarousel();
+  }
+
   // 구독 희망일 최소값 설정 (오늘 이후)
   var startDate = document.getElementById('startDate');
   if (startDate) {
