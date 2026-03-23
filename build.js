@@ -57,8 +57,8 @@ function buildPage(pagePath) {
   let html = partials['head']
     + '\n' + header
     + '\n' + partials['mobile-nav']
-    + '\n' + partials['hero']
-    + '\n' + partials['breadcrumb']
+    + (meta.noHero === 'true' ? '' : '\n' + partials['hero'])
+    + (meta.noBreadcrumb === 'true' ? '' : '\n' + partials['breadcrumb'])
     + '\n' + body
     + '\n' + partials['footer']
     + '\n' + partials['scripts'];
@@ -140,7 +140,10 @@ if (process.argv.includes('--watch')) {
   }
 
   function watchDirRecursive(dir) {
-    fs.watch(dir, rebuild);
+    fs.watch(dir, (event, filename) => {
+      if (filename && (filename.endsWith('.swp') || filename.startsWith('.'))) return;
+      rebuild();
+    });
     fs.readdirSync(dir, { withFileTypes: true }).forEach(entry => {
       if (entry.isDirectory()) {
         watchDirRecursive(path.join(dir, entry.name));
