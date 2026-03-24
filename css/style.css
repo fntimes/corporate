@@ -1005,13 +1005,12 @@ ul, li { list-style: none; }
 }
 .terms-section {
   margin-bottom: 24px;
-  padding-top: 24px;
-  border-top: 1.5px dashed var(--border-default);
+  padding-bottom: 24px;
+  border-bottom: 1.5px dashed var(--border-default);
   letter-spacing: -0.5px;
 }
-.terms-section:first-of-type {
-  border-top: none;
-  padding-top: 0;
+.terms-section:last-of-type {
+  border-bottom: none;
 }
 .terms-preamble {
   font-size: 24px;
@@ -1037,6 +1036,38 @@ ul, li { list-style: none; }
 .terms-section-body ol li { list-style: decimal; margin-bottom: 4px; }
 .terms-section-body p { margin-bottom: 8px; }
 .terms-section-body p.terms-item { padding-left: 36px; text-indent: -20px; }
+.terms-preamble-box {
+  background: var(--bg-section);
+  padding: 40px 0;
+}
+.terms-preamble-box-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.terms-preamble-box h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.terms-preamble-box p {
+  font-size: 19px;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+.terms-chapter-title {
+  font-size: 29px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  padding: 32px 0 12px;
+  border-bottom: 2px solid var(--border-strong);
+  margin-bottom: 24px;
+}
+.terms-chapter-title:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
 .terms-effective-date {
   font-size: 18px;
   color: var(--text-primary);
