@@ -1123,6 +1123,66 @@ ul, li { list-style: none; }
   border: 1px solid var(--border-light);
 }
 
+/* ===== Effort Board ===== */
+.effort-board-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+}
+.effort-board {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 3px solid var(--text-primary);
+}
+.effort-board thead th {
+  padding: 12px;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 3px solid var(--text-primary);
+  text-align: center;
+}
+.effort-board-no { width: 80px; }
+.effort-board-date { width: 140px; }
+.effort-board-subject { text-align: left; }
+.effort-board-row {
+  cursor: pointer;
+}
+.effort-board-row td {
+  padding: 16px 12px;
+  font-size: 17px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-light);
+  text-align: center;
+}
+.effort-board-row td.effort-board-subject {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 700;
+}
+.effort-board-row:hover {
+  background: var(--bg-section);
+}
+.effort-board-detail {
+  display: none;
+}
+.effort-board-row.open + .effort-board-detail {
+  display: table-row;
+}
+.effort-board-detail td {
+  padding: 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.effort-board-detail-inner {
+  padding: 24px 20px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
 /* ===== Subscribe Form ===== */
 .form-privacy {
   background: var(--bg-section);
