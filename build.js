@@ -111,6 +111,9 @@ function build() {
   ['css', 'js', 'images'].forEach(dir => {
     copyDir(path.join(ROOT, dir), path.join(DIST, dir));
   });
+  // Copy about page as root index
+  fs.copyFileSync(path.join(DIST, 'about', 'index.html'), path.join(DIST, 'index.html'));
+
   ['favicon.ico', 'CNAME'].forEach(file => {
     const src = path.join(ROOT, file);
     if (fs.existsSync(src)) {
