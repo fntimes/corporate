@@ -1076,6 +1076,53 @@ ul, li { list-style: none; }
   border-top: 1.5px solid var(--border-strong);
 }
 
+/* ===== Pledge Page ===== */
+.pledge-labels {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 36px;
+  justify-content: center;
+}
+.pledge-label {
+  padding: 8px 80px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+}
+.pledge-label--dark {
+  background: #111827;
+}
+.pledge-label--gray {
+  background: #9CA3AF;
+}
+.pledge-section {
+  margin-bottom: 48px;
+  padding-bottom: 52px;
+  border-bottom: 3px solid var(--border-strong);
+}
+.pledge-section:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+.pledge-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 4px;
+}
+.pledge-period {
+  font-size: 19px;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 32px;
+}
+.pledge-image {
+  text-align: center;
+}
+.pledge-image img {
+  max-width: 100%;
+  border: 1px solid var(--border-light);
+}
+
 /* ===== Subscribe Form ===== */
 .form-privacy {
   background: var(--bg-section);
