@@ -1011,6 +1011,13 @@ ul, li { list-style: none; }
 }
 .terms-section:last-of-type {
   border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.terms-section:has(+ .effort-board-title) {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 .terms-section:last-child {
   padding-bottom: 0;
@@ -1174,6 +1181,86 @@ ul, li { list-style: none; }
   display: none;
 }
 
+/* ===== Committee Members ===== */
+.committee-members-section {
+  background: var(--bg-section);
+  padding: 48px 0;
+}
+.committee-members-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.committee-members-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 40px;
+}
+.committee-chair {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 32px;
+}
+.committee-chair .committee-photo {
+  width: 200px;
+  height: 200px;
+}
+.committee-chair .committee-role-label {
+  font-size: 18px;
+  font-weight: 700;
+}
+.committee-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 48px;
+}
+.committee-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.committee-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.committee-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.committee-photo--placeholder {
+  background: var(--border-light);
+}
+.committee-contact-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 60px;
+  margin-bottom: 12px;
+}
+.committee-role-label {
+  font-size: 17px;
+  font-weight: 600;
+  color: #004aad;
+}
+.committee-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.committee-career {
+  font-size: 17px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
 /* ===== Grievance Page ===== */
 .grievance-heading {
   font-size: 24px;
@@ -1258,12 +1345,15 @@ ul, li { list-style: none; }
   font-weight: 700;
   color: var(--text-primary);
   text-align: center;
-  margin-top: 64px;
+  margin-top: 80px;
   margin-bottom: 24px;
-  padding-bottom: 24px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border-default);
 }
 .effort-board-title:first-child {
   margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 .effort-board {
   width: 100%;
