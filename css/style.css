@@ -1385,6 +1385,22 @@ ul, li { list-style: none; }
   line-height: 1.6;
 }
 
+/* ===== Recruit Page ===== */
+.recruit-images {
+  font-size: 0;
+  line-height: 0;
+}
+.recruit-images img {
+  display: block;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.recruit-images a {
+  display: block;
+  line-height: 0;
+}
+
 .grievance-subheading {
   font-size: 24px;
   font-weight: 700;
