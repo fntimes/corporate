@@ -1127,6 +1127,53 @@ ul, li { list-style: none; }
   border: 1px solid var(--border-light);
 }
 
+/* ===== Grievance Request Page ===== */
+.grievance-form {
+  margin-top: 64px;
+  margin-bottom: 0 !important;
+}
+.form-row.grievance-form-divider {
+  padding-bottom: 36px;
+  margin-bottom: 36px;
+  border-bottom: 1.5px dashed var(--border-default);
+}
+.form-textarea {
+  resize: vertical;
+  padding: 16px !important;
+  min-height: 200px;
+  font-family: inherit;
+  line-height: 1.6;
+}
+.form-file-wrap {
+  display: flex;
+  flex: 1;
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.form-file-name {
+  border: none !important;
+  border-radius: 0 !important;
+  flex: 1;
+}
+.form-file-btn {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  background: var(--text-primary);
+  color: #fff;
+  font-size: 19px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.form-file-btn:hover {
+  background: var(--text-secondary);
+}
+.form-file-hidden {
+  display: none;
+}
+
 /* ===== Grievance Page ===== */
 .grievance-heading {
   font-size: 24px;
