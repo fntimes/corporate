@@ -1012,6 +1012,10 @@ ul, li { list-style: none; }
 .terms-section:last-of-type {
   border-bottom: none;
 }
+.terms-section:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
 .terms-preamble {
   font-size: 24px;
   font-weight: 700;
@@ -1123,14 +1127,96 @@ ul, li { list-style: none; }
   border: 1px solid var(--border-light);
 }
 
+/* ===== Grievance Page ===== */
+.grievance-heading {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.grievance-desc {
+  font-size: 18px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.grievance-info {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 3px solid var(--text-primary);
+  border-bottom: 3px solid var(--text-primary);
+  margin-bottom: 40px;
+}
+.grievance-info th {
+  padding: 12px 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-strong);
+  border-right: 1px solid var(--border-strong);
+  white-space: nowrap;
+  text-align: left;
+  width: 120px;
+}
+.grievance-info td {
+  padding: 12px 16px;
+  font-size: 18px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-strong);
+}
+.grievance-subheading {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.grievance-download {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+}
+.grievance-download thead th {
+  background: var(--text-primary);
+  color: #fff;
+  font-size: 21px;
+  font-weight: 500;
+  padding: 12px 20px;
+  text-align: center;
+}
+.grievance-download tbody td {
+  padding: 16px 20px;
+  border: 1px solid var(--border-default);
+  border-top: none;
+  text-align: center;
+  width: 50%;
+  font-size: 19px;
+  font-weight: 500;
+}
+.grievance-download tbody td a {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+.grievance-download tbody td a:hover {
+  color: var(--accent);
+}
+.grievance-note {
+  font-size: 17px;
+  color: var(--text-primary);
+  margin-top: 16px;
+}
+
 /* ===== Effort Board ===== */
 .effort-board-title {
   font-size: 36px;
   font-weight: 700;
   color: var(--text-primary);
   text-align: center;
+  margin-top: 64px;
   margin-bottom: 24px;
   padding-bottom: 24px;
+}
+.effort-board-title:first-child {
+  margin-top: 0;
 }
 .effort-board {
   width: 100%;
