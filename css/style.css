@@ -40,7 +40,7 @@ ul, li { list-style: none; }
 /* ===== Header ===== */
 .site-header {
   position: relative;
-  z-index: 100;
+  z-index: 199;
   background: var(--bg-white);
   margin: 32px 0 8px;
 }
@@ -125,6 +125,8 @@ ul, li { list-style: none; }
   cursor: pointer;
   font-size: 26px;
   color: var(--text-primary);
+  position: relative;
+  z-index: 201;
   padding: 0 4px 12px;
   line-height: 1;
   width: 32px;
@@ -162,8 +164,25 @@ ul, li { list-style: none; }
   background: var(--bg-white);
   border-bottom: 1px solid var(--border-light);
   z-index: 199;
+  pointer-events: none;
 }
 .gnb.active .gnb-sub {
+  display: block;
+}
+.gnb-banner {
+  display: none;
+  position: absolute;
+  bottom: -228px;
+  left: calc(50% - var(--max-width) / 2 - 16px);
+  overflow: hidden;
+  z-index: 201;
+}
+.gnb-banner video {
+  display: block;
+  height: 100px;
+  width: auto;
+}
+.site-header:has(.gnb.active) .gnb-banner {
   display: block;
 }
 .gnb-sub a {
@@ -688,12 +707,12 @@ ul, li { list-style: none; }
 }
 .org-ln {
   fill: none;
-  stroke: #3A5A7A;
+  stroke: #2A4A6A;
   stroke-width: 2;
-  opacity: 0.55;
+  opacity: 0.75;
   stroke-dasharray: var(--l);
   stroke-dashoffset: var(--l);
-  animation: orgDraw 0.5s ease forwards;
+  animation: orgDraw 1.2s ease-out forwards;
   animation-delay: var(--d, 0s);
 }
 @keyframes orgDraw { to { stroke-dashoffset: 0; } }

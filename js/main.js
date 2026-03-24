@@ -32,6 +32,23 @@ document.addEventListener('DOMContentLoaded', function () {
   menuClose.addEventListener('click', closeMenu);
   gnbOverlay.addEventListener('click', closeMenu);
 
+  // GNB 메뉴 클릭 시 사이트맵 열기
+  var gnbItems = document.querySelectorAll('.gnb-item > a');
+  gnbItems.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      if (window.innerWidth > 1024) {
+        e.preventDefault();
+        if (!gnb.classList.contains('active')) {
+          gnb.classList.add('active');
+          gnbOverlay.classList.add('active');
+          menuToggle.style.display = 'none';
+          menuClose.style.display = '';
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    });
+  });
+
   // 연혁 캐러셀
   var historyTabs = document.querySelectorAll('.history-tab');
   var historyCards = document.querySelectorAll('.history-card');
@@ -261,18 +278,25 @@ document.addEventListener('DOMContentLoaded', function () {
               addOrgPath('M'+sx+','+sy+' L'+mx+','+sy+' L'+mx+','+ey+' L'+ex+','+ey, d0);
               return;
             }
-            // fork
+            // fork: 하나의 연결 path로 그리기
             var kids = conn.to.map(function(id) { return document.getElementById(id); }).filter(Boolean);
             if (kids.length === 0) return;
             var pBotY = obot(pEl);
             var cTopY = Math.min.apply(null, kids.map(otop));
             var forkY = pBotY + (cTopY - pBotY) * 0.5;
-            addOrgPath('M'+ocx(pEl)+','+pBotY+' L'+ocx(pEl)+','+forkY, d0);
             var xs = kids.map(ocx).sort(function(a,b){ return a-b; });
-            addOrgPath('M'+xs[0]+','+forkY+' L'+xs[xs.length-1]+','+forkY, d0+0.1);
-            kids.forEach(function(el, i) {
-              addOrgPath('M'+ocx(el)+','+forkY+' L'+ocx(el)+','+otop(el), d0+0.16+i*0.03);
-            });
+
+            // 전체를 하나의 path로: 수직 → 좌측으로 이동 → 좌에서 우로 수평 (각 child 위치에서 드롭)
+            var d = 'M'+ocx(pEl)+','+pBotY+' L'+ocx(pEl)+','+forkY;
+            d += ' L'+xs[0]+','+forkY;
+            for (var i = 0; i < xs.length; i++) {
+              d += ' L'+xs[i]+','+forkY;
+              d += ' L'+xs[i]+','+otop(kids[i]);
+              if (i < xs.length - 1) {
+                d += ' M'+xs[i]+','+forkY;
+              }
+            }
+            addOrgPath(d, d0);
           });
         });
       });
