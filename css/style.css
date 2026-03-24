@@ -204,32 +204,6 @@ ul, li { list-style: none; }
   font-weight: 700;
 }
 
-/* ===== Terms TOC ===== */
-.terms-toc {
-  background: var(--bg-section);
-  border-bottom: 1px solid var(--border-light);
-}
-.terms-toc-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 24px 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 48px;
-}
-.terms-toc-col a {
-  display: block;
-  padding: 4px 0;
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--text-body);
-  transition: color 0.2s;
-}
-.terms-toc-col a:hover {
-  color: var(--accent);
-}
-
-
 /* ===== About Hero ===== */
 .about-hero {
   position: relative;
@@ -1007,6 +981,28 @@ ul, li { list-style: none; }
 }
 
 /* ===== Terms Page ===== */
+.terms-toc {
+  background: var(--bg-section);
+  padding: 24px 0;
+}
+.terms-toc-inner {
+  display: grid;
+  grid-template-rows: repeat(10, auto);
+  grid-auto-flow: column;
+  gap: 8px 24px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 16px 0;
+}
+.terms-toc a {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.terms-toc a:hover {
+  color: var(--text-primary);
+}
 .terms-section {
   margin-bottom: 24px;
   padding-top: 24px;
