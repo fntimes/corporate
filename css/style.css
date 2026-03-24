@@ -1296,12 +1296,68 @@ ul, li { list-style: none; }
   vertical-align: middle;
   width: 160px;
 }
+.grievance-info--fixed { table-layout: fixed; }
+.grievance-info-th { width: 220px; }
 .grievance-info td {
   padding: 12px 16px;
   font-size: 18px;
   color: var(--text-primary);
   border-bottom: 1px solid var(--border-strong);
 }
+.copyright-download-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: var(--text-primary);
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+.copyright-download-btn:hover {
+  background: var(--text-secondary);
+}
+
+/* ===== No Email Page ===== */
+.no-email-icon {
+  margin: 24px 0;
+}
+.no-email-icon img {
+  width: 180px;
+  height: auto;
+}
+.no-email-title {
+  font-size: 24px;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+}
+.no-email-table {
+  width: 100%;
+  margin-bottom: 40px;
+}
+.no-email-table th {
+  width: 200px;
+}
+.no-email-table {
+  border-bottom: none;
+}
+.no-email-desc {
+  text-align: left;
+  border-top: 1px solid var(--border-default);
+  padding-top: 24px;
+}
+.no-email-desc-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+.no-email-desc p {
+  font-size: 17px;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
 .grievance-subheading {
   font-size: 24px;
   font-weight: 700;
