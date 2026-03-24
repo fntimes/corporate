@@ -21,8 +21,29 @@
   --accent: #0f0f5f;
   --accent-red: #ff3131;
 
+  /* 브랜드 색상 */
+  --brand-blue: #123971;
+  --brand-blue-light: #5170ff;
+  --brand-blue-bg: #d5e7ff;
+  --brand-blue-bg-alt: #bbd0ed;
+  --brand-blue-accent: #3190cf;
+  --brand-blue-deep: #004aad;
+  --brand-teal: #1A8E8E;
+
+  /* 테이블 헤더 (통일) */
+  --table-header-bg: #123971;
+  --table-header-text: #fff;
+
   /* 레이아웃 */
   --max-width: 1200px;
+
+  /* 간격 */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
 }
 
 /* ===== Reset & Base ===== */
@@ -305,7 +326,7 @@ ul, li { list-style: none; }
 
 /* ===== About Slogan ===== */
 .about-slogan {
-  padding: 48px 24px 64px;
+  padding: var(--space-xl) 24px var(--space-2xl);
   text-align: center;
 }
 .about-slogan-inner {
@@ -347,7 +368,6 @@ ul, li { list-style: none; }
 }
 .about-overview-img--paper { height: 280px; position: relative; z-index: 1; }
 .about-overview-img--device { height: 280px; position: relative; margin-top: 80px; margin-left: -200px; z-index: 2; }
-.about-overview-info {}
 .about-info-table {
   width: 100%;
   border-collapse: collapse;
@@ -367,16 +387,17 @@ ul, li { list-style: none; }
 .about-info-table tr th:first-child { border-left: none; }
 .about-info-table tr td:last-child { border-right: none; }
 .about-info-table th {
-  background: #123971;
-  color: #fff;
-  white-space: nowrap;
+  background: var(--table-header-bg);
+  color: var(--table-header-text);
   white-space: nowrap;
 }
 .about-info-table td {
   color: var(--text-body);
   text-align: left;
 }
-.about-info-table { table-layout: fixed; }
+.about-info-table {
+  table-layout: fixed;
+}
 .about-info-table .col-th { width: 160px; }
 
 /* About Orgs */
@@ -406,7 +427,7 @@ ul, li { list-style: none; }
 /* ===== About Greeting ===== */
 .about-greeting {
   background: var(--bg-section);
-  padding: 48px 0 60px;
+  padding: var(--space-xl) 0 var(--space-2xl);
 }
 .about-greeting-inner {
   max-width: var(--max-width);
@@ -417,7 +438,7 @@ ul, li { list-style: none; }
   font-weight: 700;
   color: var(--text-primary);
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--space-md);
 }
 .about-greeting-top {
   display: flex;
@@ -433,7 +454,7 @@ ul, li { list-style: none; }
   text-align: center;
 }
 .about-greeting-subtitle {
-  font-size: 30px;
+  font-size: 29px;
   font-weight: 500;
   color: var(--text-body);
   line-height: 1.5;
@@ -452,12 +473,8 @@ ul, li { list-style: none; }
   color: var(--text-body);
   line-height: 1.6;
 }
-.about-greeting-body p {
-}
 
 /* About Profile */
-.about-profile {
-}
 .about-profile-title {
   font-size: 23px;
   font-weight: 700;
@@ -473,19 +490,19 @@ ul, li { list-style: none; }
   border-collapse: collapse;
 }
 .about-profile-table thead th {
-  background: #111;
-  color: #fff;
+  background: var(--table-header-bg);
+  color: var(--table-header-text);
   font-size: 19px;
   font-weight: 500;
   padding: 10px 16px;
   text-align: center;
 }
 .about-profile-table tbody td {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text-primary);
   padding: 8px 16px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border-default);
 }
 .about-profile-table tbody td:first-child {
   font-weight: 500;
@@ -497,7 +514,7 @@ ul, li { list-style: none; }
 .about-history {
   position: relative;
   overflow: hidden;
-  padding: 48px 0 64px;
+  padding: var(--space-xl) 0 var(--space-2xl);
 }
 .about-history-video {
   position: absolute;
@@ -522,7 +539,7 @@ ul, li { list-style: none; }
   font-weight: 700;
   color: #fff;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--space-md);
 }
 .about-history-subtitle {
   font-size: 29px;
@@ -530,7 +547,7 @@ ul, li { list-style: none; }
   color: #fff;
   text-align: center;
   line-height: 1.5;
-  margin-bottom: 48px;
+  margin-bottom: var(--space-xl);
   letter-spacing: -0.5px;
 }
 
@@ -589,7 +606,7 @@ ul, li { list-style: none; }
   left: 0;
   right: 0;
   height: 1.5px;
-  background: #123971;
+  background: var(--brand-blue);
   z-index: 2;
   pointer-events: none;
   transition: left 0.3s, right 0.3s;
@@ -626,7 +643,7 @@ ul, li { list-style: none; }
   transform: translateX(-50%);
   width: 15px;
   height: 15px;
-  background: #123971;
+  background: var(--brand-blue);
   border-radius: 50%;
   z-index: 3;
 }
@@ -644,7 +661,7 @@ ul, li { list-style: none; }
   letter-spacing: -0.5px;
 }
 .history-month {
-  color: #5170ff;
+  color: var(--brand-blue-light);
   font-weight: 600;
   margin-right: 4px;
 }
@@ -661,8 +678,8 @@ ul, li { list-style: none; }
 
 /* ===== About Organization ===== */
 .about-org {
-  background: #d5e7ff;
-  padding: 48px 0 60px;
+  background: var(--brand-blue-bg);
+  padding: var(--space-xl) 0 var(--space-2xl);
   text-align: center;
 }
 .about-org-inner {
@@ -674,7 +691,7 @@ ul, li { list-style: none; }
   font-weight: 700;
   color: var(--text-primary);
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--space-md);
 }
 .about-org-subtitle {
   font-size: 29px;
@@ -682,7 +699,7 @@ ul, li { list-style: none; }
   color: var(--text-primary);
   text-align: center;
   line-height: 1.5;
-  margin-bottom: 48px;
+  margin-bottom: var(--space-xl);
   letter-spacing: -0.5px;
 }
 
@@ -785,7 +802,7 @@ ul, li { list-style: none; }
   font-weight: 700;
   color: #fff;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--space-md);
 }
 .about-vision-subtitle {
   font-size: 29px;
@@ -816,14 +833,14 @@ ul, li { list-style: none; }
   padding: 0 0 64px;
 }
 .about-vision-card {
-  background: #d5e7ff;
+  background: var(--brand-blue-bg);
   padding: 40px 36px 36px;
   text-align: left;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 .about-vision-card:nth-child(2),
 .about-vision-card:nth-child(4) {
-  background: #bbd0ed;
+  background: var(--brand-blue-bg-alt);
 }
 .about-vision-card-title {
   font-size: 36px;
@@ -853,7 +870,7 @@ ul, li { list-style: none; }
 .about-philosophy {
   position: relative;
   overflow: hidden;
-  padding: 64px 0;
+  padding: var(--space-xl) 0 var(--space-2xl);
 }
 .about-philosophy-video {
   position: absolute;
@@ -878,7 +895,7 @@ ul, li { list-style: none; }
   font-weight: 700;
   color: #fff;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--space-md);
 }
 .about-philosophy-subtitle {
   font-size: 29px;
@@ -886,7 +903,7 @@ ul, li { list-style: none; }
   color: #fff;
   text-align: center;
   line-height: 1.5;
-  margin-bottom: 48px;
+  margin-bottom: var(--space-xl);
   letter-spacing: -0.5px;
 }
 .about-philosophy-items {
@@ -905,7 +922,7 @@ ul, li { list-style: none; }
 .about-philosophy-item-title {
   font-size: 26px;
   font-weight: 700;
-  color: #3190cf;
+  color: var(--brand-blue-accent);
   margin-bottom: 4px;
 }
 .about-philosophy-item-body {
@@ -917,8 +934,8 @@ ul, li { list-style: none; }
 
 /* ===== About Location ===== */
 .about-location {
-  background: #123971;
-  padding: 64px 0;
+  background: var(--brand-blue);
+  padding: var(--space-xl) 0 var(--space-2xl);
 }
 .about-location-inner {
   max-width: var(--max-width);
@@ -929,7 +946,7 @@ ul, li { list-style: none; }
   font-weight: 700;
   color: #fff;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--space-md);
 }
 .about-location-subtitle {
   font-size: 29px;
@@ -937,7 +954,7 @@ ul, li { list-style: none; }
   color: #fff;
   text-align: center;
   line-height: 1.5;
-  margin-bottom: 48px;
+  margin-bottom: var(--space-xl);
   letter-spacing: -0.5px;
 }
 .about-location-map {
@@ -957,19 +974,20 @@ ul, li { list-style: none; }
 .about-location-table td {
   padding: 14px 20px;
   font-size: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   text-align: left;
-  border-bottom: 1px solid #fff;
 }
 .about-location-table th {
-  color: #fff;
+  color: var(--table-header-text);
   font-weight: 500;
   width: 300px;
   text-align: center;
-  background: #100f0d;
+  background: rgba(16, 15, 13, 0.6);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 .about-location-table td {
   color: #fff;
+  padding-left: 32px;
 }
 .about-location-table tr:last-child th,
 .about-location-table tr:last-child td {
@@ -978,7 +996,7 @@ ul, li { list-style: none; }
 
 /* ===== About Sections ===== */
 .about-section {
-  padding: 64px 0;
+  padding: var(--space-2xl) 0;
   border-bottom: 1px solid var(--border-light);
 }
 .about-section:last-child { border-bottom: none; }
@@ -1277,7 +1295,7 @@ ul, li { list-style: none; }
 .committee-role-label {
   font-size: 17px;
   font-weight: 600;
-  color: #004aad;
+  color: var(--brand-blue-deep);
 }
 .committee-name {
   font-size: 22px;
@@ -1361,12 +1379,10 @@ ul, li { list-style: none; }
 .no-email-table {
   width: 100%;
   margin-bottom: 40px;
+  border-bottom: none;
 }
 .no-email-table th {
   width: 200px;
-}
-.no-email-table {
-  border-bottom: none;
 }
 .no-email-desc {
   text-align: left;
@@ -1413,8 +1429,8 @@ ul, li { list-style: none; }
   margin: 24px 0;
 }
 .grievance-download thead th {
-  background: var(--text-primary);
-  color: #fff;
+  background: var(--table-header-bg);
+  color: var(--table-header-text);
   font-size: 21px;
   font-weight: 500;
   padding: 12px 20px;
@@ -1852,7 +1868,7 @@ ul, li { list-style: none; }
   .hero-banner-title { font-size: 36px; }
 
   .terms-toc-inner { padding: 24px; }
-  .terms-toc-col a { font-size: 17px; }
+  .terms-toc a { font-size: 17px; }
 
   .main-content { padding: 32px 24px 60px; }
   .terms-section-title { font-size: 20px; }
@@ -1882,6 +1898,41 @@ ul, li { list-style: none; }
   .about-hero-text { font-size: 15px; }
   .about-section { padding: 48px 0; }
   .about-section-title { font-size: 24px; }
+
+  /* About Overview */
+  .about-overview-media { flex-direction: column; align-items: center; gap: 24px; }
+  .about-overview-img--paper { height: 200px; }
+  .about-overview-img--device { height: 200px; margin-top: 0; margin-left: 0; }
+  .about-info-table { font-size: 16px; }
+
+  /* About Greeting */
+  .about-greeting-top { flex-direction: column; gap: 24px; }
+  .about-greeting-body { font-size: 16px; }
+
+  /* About History */
+  .about-history-inner { padding: 0 24px; }
+
+  /* About Org */
+  .org-grid { grid-template-columns: repeat(26, 1fr); overflow-x: auto; min-width: 900px; }
+  .about-org-inner { overflow-x: auto; padding: 0 24px; }
+  .about-org-title { font-size: 28px; }
+
+  /* About Vision */
+  .about-vision-cards { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  /* About Philosophy */
+  .about-philosophy-items { flex-direction: column; gap: 24px; }
+  .about-philosophy-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 24px; }
+  .about-philosophy-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  /* About Location */
+  .about-location-map iframe { height: 300px; }
+  .about-location-table { font-size: 16px; }
+
+  /* Committee */
+  .committee-grid { gap: 24px 32px; }
+  .committee-photo { width: 100px; height: 100px; }
+  .committee-chair .committee-photo { width: 120px; height: 120px; }
 }
 
 /* ===== Mobile ===== */
@@ -1934,7 +1985,7 @@ ul, li { list-style: none; }
     grid-template-columns: 1fr;
     gap: 0;
   }
-  .terms-toc-col a { font-size: 16px; }
+  .terms-toc a { font-size: 16px; }
 
   .form-privacy-inner { padding: 0 16px; }
   .form-privacy-title { font-size: 18px; }
@@ -1971,15 +2022,130 @@ ul, li { list-style: none; }
   .footer-copyright-inner { padding: 0 16px; font-size: 13px; text-align: center; }
   .footer-copyright-br { display: inline; }
 
-  .about-hero { height: 280px; }
+  .about-hero { height: 320px; }
   .about-hero-inner { grid-template-columns: 1fr; gap: 24px; padding: 0 16px; }
   .about-hero-col:not(.about-hero-col--center) { display: none; }
-  .about-hero-img--02 { height: 80px; }
-  .about-hero-brand { font-size: 16px; }
-  .about-hero-brand-sub { font-size: 12px; margin-bottom: 16px; }
-  .about-hero-logo { height: 20px; }
+  .about-hero-img--02 { height: 120px; }
+  .about-hero-brand { font-size: 18px; }
+  .about-hero-brand-sub { font-size: 14px; margin-bottom: 24px; }
+  .about-hero-logo { height: 40px; }
   .about-section { padding: 32px 0; }
   .about-section-title { font-size: 20px; margin-bottom: 16px; }
   .about-section-body { font-size: 15px; }
+
+  .about-slogan { padding: 32px 0; }
+  .about-slogan-inner,
+  .about-overview,
+  .about-greeting-inner,
+  .about-history-inner,
+  .about-org-inner,
+  .about-location-inner,
+  .committee-members-inner,
+  .terms-preamble-box-inner { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* About Slogan */
+  .about-slogan-text { font-size: 18px; padding: 0; text-align: left; margin-bottom: 24px; }
+  .about-slogan-text br { display: none; }
+
+  /* About Overview */
+  .about-overview-media { flex-direction: column; align-items: center; gap: 16px; }
+  .about-overview-logo-img { max-width: 240px; }
+  .about-overview-img--paper { height: 160px; }
+  .about-overview-img--device { height: 160px; margin-top: 0; margin-left: 0; }
+  .about-info-table,
+  .about-info-table tbody { display: block; width: 100%; }
+  .about-info-table colgroup { display: none; }
+  .about-info-table tr {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    width: 100%;
+  }
+  .about-info-table th,
+  .about-info-table td {
+    display: block;
+    font-size: 14px;
+    padding: 6px 10px;
+    border: none !important;
+    border-bottom: 1px solid #666 !important;
+  }
+  .about-orgs { margin-top: 32px; }
+  .about-orgs-title { font-size: 20px; }
+
+  /* About Greeting */
+  .about-greeting-top { flex-direction: column; gap: 16px; }
+  .about-greeting-title { font-size: 24px; }
+  .about-greeting-body { font-size: 14px; }
+  .about-greeting-photo-img { width: 100%; max-width: 200px; }
+
+  /* About History */
+  .about-history-title { font-size: 28px; }
+
+  /* About Org */
+  .about-org-inner { overflow-x: auto; }
+  .org-grid { min-width: 800px; }
+  .about-org-title { font-size: 24px; }
+  .about-org-subtitle { font-size: 14px; }
+
+  /* About Vision */
+  .about-vision-title { font-size: 24px; }
+  .about-vision-cards { grid-template-columns: 1fr; gap: 16px; }
+
+  /* About Philosophy */
+  .about-philosophy-title { font-size: 24px; }
+  .about-philosophy-items { flex-direction: column; gap: 20px; }
+  .about-philosophy-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 0 0 20px; }
+  .about-philosophy-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .about-philosophy-item-title { font-size: 18px; }
+  .about-philosophy-item-body { font-size: 14px; }
+
+  /* About Location */
+  .about-location-title { font-size: 24px; }
+  .about-location-map iframe { height: 250px; }
+  .about-location-table { font-size: 14px; }
+  .about-location-table th { width: 80px; }
+
+  /* Committee */
+  .committee-members-title { font-size: 24px; }
+  .committee-grid { grid-template-columns: 1fr; gap: 20px; }
+  .committee-photo { width: 80px; height: 80px; }
+  .committee-chair .committee-photo { width: 100px; height: 100px; }
+  .committee-name { font-size: 16px; }
+  .committee-career { font-size: 13px; }
+
+  /* Grievance */
+  .grievance-info th { font-size: 14px; width: 100px; }
+  .grievance-info td { font-size: 14px; }
+  .grievance-download thead th { font-size: 14px; }
+  .grievance-download tbody td { font-size: 14px; }
+
+  /* Effort Board */
+  .effort-board-title { font-size: 24px; }
+  .effort-board thead th { font-size: 14px; }
+  .effort-board-row td { font-size: 14px; }
+  .effort-board-no { width: 50px; }
+  .effort-board-date { width: 100px; }
+
+  /* Terms TOC */
+  .terms-toc-inner {
+    grid-template-rows: auto;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+  }
+  .terms-toc a { font-size: 16px; }
+
+  /* Terms Preamble Box */
+  .terms-preamble-box-inner { padding: 0 16px; }
+  .terms-preamble-box p { font-size: 15px; }
+
+  /* Pledge */
+  .pledge-labels { flex-direction: column; }
+  .pledge-label { font-size: 16px; padding: 14px; }
+  .pledge-title { font-size: 20px; }
+  .pledge-period { font-size: 15px; }
+
+  /* No Email */
+  .no-email-icon img { width: 80px; }
+  .no-email-title { font-size: 17px; }
+  .no-email-table th { width: 140px; }
 }
 /* test */
