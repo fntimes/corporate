@@ -643,7 +643,7 @@ ul, li { list-style: none; }
 /* ===== About Organization ===== */
 .about-org {
   background: #d5e7ff;
-  padding: 48px 0 0;
+  padding: 48px 0 60px;
   text-align: center;
 }
 .about-org-inner {
@@ -667,69 +667,77 @@ ul, li { list-style: none; }
   letter-spacing: -0.5px;
 }
 
-/* Org Chart */
-.org-chart {
+/* Org Chart (Grid) */
+.org-grid {
   position: relative;
-  width: var(--max-width);
-  height: 560px;
+  display: grid;
+  grid-template-columns: repeat(26, 1fr);
+  grid-template-rows:
+    64px 28px 56px 70px 56px 42px 56px 42px 56px;
+  justify-content: center;
+  width: 100%;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
-.org-chart svg.connectors {
+.org-grid svg {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
   pointer-events: none;
   z-index: 0;
 }
-.connector-line {
+.org-ln {
   fill: none;
-  stroke: #5A8AB4;
-  stroke-width: 1.8;
-  opacity: 0.5;
-  stroke-dasharray: var(--len);
-  stroke-dashoffset: var(--len);
-  animation: drawLine 0.6s ease forwards;
-  animation-delay: var(--delay, 0s);
+  stroke: #3A5A7A;
+  stroke-width: 2;
+  opacity: 0.55;
+  stroke-dasharray: var(--l);
+  stroke-dashoffset: var(--l);
+  animation: orgDraw 0.5s ease forwards;
+  animation-delay: var(--d, 0s);
 }
-@keyframes drawLine { to { stroke-dashoffset: 0; } }
-.org-node {
-  position: absolute;
+@keyframes orgDraw { to { stroke-dashoffset: 0; } }
+.on {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 11px 28px;
-  border-radius: 26px;
+  text-align: center;
   color: #fff;
   font-weight: 600;
-  font-size: 14.5px;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+  border-radius: 22px;
   z-index: 1;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  padding: 4px 12px;
+  margin: auto;
   cursor: default;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   opacity: 0;
-  transform: translateY(8px) scale(0.95);
-  animation: nodeAppear 0.4s ease forwards;
-  animation-delay: var(--delay, 0s);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform: translateY(5px);
+  animation: orgAppear 0.3s ease forwards;
+  animation-delay: var(--d, 0s);
+  transition: transform .2s, box-shadow .2s;
 }
-.org-node:hover {
-  transform: translateY(-2px) scale(1.04) !important;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+.on:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.18);
   z-index: 10;
 }
-@keyframes nodeAppear { to { opacity: 1; transform: translateY(0) scale(1); } }
-.org-node.lg { padding: 13px 36px; font-size: 16px; border-radius: 28px; }
-.org-node.sm { padding: 9px 20px; font-size: 13px; border-radius: 22px; font-weight: 500; }
-.c-navy    { background: linear-gradient(135deg, #1B3A5C, #122B45); }
-.c-navy-m  { background: linear-gradient(135deg, #2B6490, #1B3A5C); }
-.c-navy-l  { background: linear-gradient(135deg, #3D7FA8, #2B6490); }
-.c-brown   { background: linear-gradient(135deg, #9A7B2E, #7A6118); }
-.c-gold    { background: linear-gradient(135deg, #B89530, #7A6118); }
-.c-purple  { background: linear-gradient(135deg, #6B35A8, #522B88); }
-.c-purple-l{ background: linear-gradient(135deg, #8550C0, #6B35A8); }
-.c-teal    { background: linear-gradient(135deg, #1A8E8E, #157272); }
-.c-teal-l  { background: linear-gradient(135deg, #22A8A8, #1A8E8E); }
+@keyframes orgAppear { to { opacity: 1; transform: translateY(0); } }
+.on.xl { min-width: 190px; height: 50px; font-size: 17px; border-radius: 28px; }
+.on.lg { min-width: 130px; height: 46px; font-size: 15px; }
+.on.md { min-width: 110px; height: 44px; font-size: 14px; }
+.on.sm { min-width: 88px;  height: 48px; font-size: 13px; font-weight: 500; }
+.on.xs { min-width: 76px;  height: 48px; font-size: 12.5px; font-weight: 500; border-radius: 18px; }
+.cN  { background: #1B3A5C; }
+.cNm { background: #2B6490; }
+.cNl { background: #3D7FA8; }
+.cB  { background: #9A7B2E; }
+.cG  { background: #8B6F1E; }
+.cP  { background: #5C2D91; }
+.cPl { background: #7444AA; }
+.cT  { background: #1A8E8E; }
+.cTl { background: #22A8A8; }
 
 /* ===== About Vision ===== */
 .about-vision {

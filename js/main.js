@@ -206,130 +206,79 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 조직도
-  var orgChart = document.getElementById('orgChart');
+  // 조직도 (Grid 기반)
+  var orgGrid = document.getElementById('orgGrid');
   var orgSvg = document.getElementById('orgSvg');
-  if (orgChart && orgSvg) {
-    var orgNodes = [
-      { id: 'ceo',      label: '대표이사 사장',   cls: 'c-navy lg',     x: 350, y: 20 },
-      { id: 'evp',      label: '전무',            cls: 'c-navy',        x: 400, y: 90 },
-      { id: 'ailab',    label: 'AI금융\n연구소',   cls: 'c-gold sm',     x: 580, y: 82 },
-      { id: 'mgmt',     label: '경영\n지원실',     cls: 'c-brown sm',    x: 10,  y: 225 },
-      { id: 'mkt',      label: '마케팅\n사업국',   cls: 'c-brown sm',    x: 85,  y: 225 },
-      { id: 'edit',     label: '편집국',           cls: 'c-navy',        x: 240, y: 170 },
-      { id: 'aimedia',  label: 'AI미디어\n본부',   cls: 'c-purple sm',   x: 480, y: 162 },
-      { id: 'regional', label: '지역\n본부',       cls: 'c-teal sm',     x: 770, y: 162 },
-      { id: 'fin',      label: '금융\n총괄국',     cls: 'c-navy-m sm',   x: 200, y: 310 },
-      { id: 'ind',      label: '산업\n총괄국',     cls: 'c-navy-m sm',   x: 310, y: 310 },
-      { id: 'am_edit',  label: '편집부',           cls: 'c-purple-l sm', x: 455, y: 260 },
-      { id: 'am_biz',   label: '사업부',           cls: 'c-purple-l sm', x: 525, y: 260 },
-      { id: 'wm',       label: 'WM국',            cls: 'c-purple-l sm', x: 610, y: 260 },
-      { id: 'reg1',     label: '인천·강원\n·충청', cls: 'c-teal-l sm',   x: 700, y: 252 },
-      { id: 'reg2',     label: '대구·경남\n·북',   cls: 'c-teal-l sm',   x: 800, y: 252 },
-      { id: 'reg3',     label: '광주·전남\n·북',   cls: 'c-teal-l sm',   x: 895, y: 252 },
-      { id: 'fin1',     label: '금융부',           cls: 'c-navy-l sm',   x: 140, y: 410 },
-      { id: 'fin2',     label: '증권부',           cls: 'c-navy-l sm',   x: 210, y: 410 },
-      { id: 'fin3',     label: '건설·\n부동산부',  cls: 'c-navy-l sm',   x: 275, y: 402 },
-      { id: 'ind1',     label: '산업부',           cls: 'c-navy-l sm',   x: 365, y: 410 },
-      { id: 'ind2',     label: '생활·\n경제부',    cls: 'c-navy-l sm',   x: 430, y: 402 },
-      { id: 'wm1',      label: '편집부',           cls: 'c-purple-l sm', x: 590, y: 350 },
-      { id: 'wm2',      label: '사업부',           cls: 'c-purple-l sm', x: 660, y: 350 },
+  if (orgGrid && orgSvg) {
+    var connections = [
+      { from: 'ceo', to: ['evp'], type: 'straight', delay: 0.15 },
+      { from: 'evp', to: ['ailab'], type: 'side', delay: 0.35 },
+      { from: 'evp', to: ['mgmt','mkt','edit','aim','reg'], type: 'fork', delay: 0.4 },
+      { from: 'edit', to: ['fing','indg'], type: 'fork', delay: 0.75 },
+      { from: 'aim', to: ['ae1','ab1','wm'], type: 'fork', delay: 0.78 },
+      { from: 'wm', to: ['we1','wb1'], type: 'fork', delay: 1.05 },
+      { from: 'fing', to: ['f1','f2','f3'], type: 'fork', delay: 1.0 },
+      { from: 'indg', to: ['i1','i2'], type: 'fork', delay: 1.03 },
+      { from: 'reg', to: ['r1','r2','r3'], type: 'fork', delay: 0.82 },
     ];
 
-    var orgEdges = [
-      ['ceo', 'evp'],
-      ['evp', 'ailab', 'h'],
-      ['evp', 'mgmt'],
-      ['evp', 'mkt'],
-      ['evp', 'edit'],
-      ['evp', 'aimedia'],
-      ['evp', 'regional'],
-      ['edit', 'fin'],
-      ['edit', 'ind'],
-      ['aimedia', 'am_edit'],
-      ['aimedia', 'am_biz'],
-      ['aimedia', 'wm'],
-      ['fin', 'fin1'],
-      ['fin', 'fin2'],
-      ['fin', 'fin3'],
-      ['ind', 'ind1'],
-      ['ind', 'ind2'],
-      ['wm', 'wm1'],
-      ['wm', 'wm2'],
-      ['regional', 'reg1'],
-      ['regional', 'reg2'],
-      ['regional', 'reg3'],
-    ];
+    function ocx(el) { return el.offsetLeft + el.offsetWidth / 2; }
+    function ocy(el) { return el.offsetTop + el.offsetHeight / 2; }
+    function obot(el) { return el.offsetTop + el.offsetHeight; }
+    function otop(el) { return el.offsetTop; }
+    function ort(el) { return el.offsetLeft + el.offsetWidth; }
+    function olt(el) { return el.offsetLeft; }
 
-    var depthMap = {
-      ceo:0, evp:1, ailab:1,
-      mgmt:2, mkt:2, edit:2, aimedia:2, regional:2,
-      fin:3, ind:3, am_edit:3, am_biz:3, wm:3, reg1:3, reg2:3, reg3:3,
-      fin1:4, fin2:4, fin3:4, ind1:4, ind2:4, wm1:4, wm2:4
-    };
-
-    var nodeEls = {};
-    var nodeMap = {};
-    orgNodes.forEach(function (n) { nodeMap[n.id] = n; });
-
-    function getBottom(n) {
-      var el = nodeEls[n.id]; return { x: n.x + el.offsetWidth / 2, y: n.y + el.offsetHeight };
-    }
-    function getTop(n) {
-      var el = nodeEls[n.id]; return { x: n.x + el.offsetWidth / 2, y: n.y };
-    }
-    function getRight(n) {
-      var el = nodeEls[n.id]; return { x: n.x + el.offsetWidth, y: n.y + el.offsetHeight / 2 };
-    }
-    function getLeft(n) {
-      var el = nodeEls[n.id]; return { x: n.x, y: n.y + el.offsetHeight / 2 };
+    function addOrgPath(d, delay) {
+      var p = document.createElementNS('http://www.w3.org/2000/svg','path');
+      p.setAttribute('d', d);
+      p.classList.add('org-ln');
+      orgSvg.appendChild(p);
+      var l = p.getTotalLength();
+      p.style.setProperty('--l', l);
+      p.style.setProperty('--d', delay + 's');
     }
 
-    function drawPath(d, delay) {
-      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', d);
-      path.classList.add('connector-line');
-      orgSvg.appendChild(path);
-      var len = path.getTotalLength();
-      path.style.setProperty('--len', len);
-      path.style.setProperty('--delay', delay + 's');
-    }
+    function drawOrgLines() {
+      orgSvg.innerHTML = '';
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          connections.forEach(function(conn) {
+            var pEl = document.getElementById(conn.from);
+            if (!pEl) return;
+            var d0 = conn.delay;
 
-    // Create nodes
-    orgNodes.forEach(function (n) {
-      var el = document.createElement('div');
-      el.className = 'org-node ' + n.cls;
-      el.innerHTML = n.label.replace(/\n/g, '<br>');
-      el.style.left = n.x + 'px';
-      el.style.top = n.y + 'px';
-      var delay = (depthMap[n.id] || 0) * 0.35 + 0.1;
-      el.style.setProperty('--delay', delay + 's');
-      orgChart.appendChild(el);
-      nodeEls[n.id] = el;
-    });
-
-    // Draw lines after layout
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        orgEdges.forEach(function (edge) {
-          var pid = edge[0], cid = edge[1], type = edge[2];
-          var parent = nodeMap[pid], child = nodeMap[cid];
-          var baseDelay = (depthMap[pid] || 0) * 0.35 + 0.15;
-          if (type === 'h') {
-            var p = getRight(parent), c = getLeft(child);
-            drawPath('M' + p.x + ',' + p.y + ' L' + c.x + ',' + c.y, baseDelay);
-          } else {
-            var p = getBottom(parent), c = getTop(child);
-            if (Math.abs(p.x - c.x) < 2) {
-              drawPath('M' + p.x + ',' + p.y + ' L' + c.x + ',' + c.y, baseDelay);
-            } else {
-              var midY = p.y + (c.y - p.y) * 0.5;
-              drawPath('M' + p.x + ',' + p.y + ' L' + p.x + ',' + midY + ' L' + c.x + ',' + midY + ' L' + c.x + ',' + c.y, baseDelay);
+            if (conn.type === 'straight') {
+              var cEl = document.getElementById(conn.to[0]);
+              addOrgPath('M'+ocx(pEl)+','+obot(pEl)+' L'+ocx(cEl)+','+otop(cEl), d0);
+              return;
             }
-          }
+            if (conn.type === 'side') {
+              var cEl = document.getElementById(conn.to[0]);
+              var sx = ort(pEl), sy = ocy(pEl);
+              var ex = olt(cEl), ey = ocy(cEl);
+              var mx = sx + (ex - sx) * 0.4;
+              addOrgPath('M'+sx+','+sy+' L'+mx+','+sy+' L'+mx+','+ey+' L'+ex+','+ey, d0);
+              return;
+            }
+            // fork
+            var kids = conn.to.map(function(id) { return document.getElementById(id); }).filter(Boolean);
+            if (kids.length === 0) return;
+            var pBotY = obot(pEl);
+            var cTopY = Math.min.apply(null, kids.map(otop));
+            var forkY = pBotY + (cTopY - pBotY) * 0.5;
+            addOrgPath('M'+ocx(pEl)+','+pBotY+' L'+ocx(pEl)+','+forkY, d0);
+            var xs = kids.map(ocx).sort(function(a,b){ return a-b; });
+            addOrgPath('M'+xs[0]+','+forkY+' L'+xs[xs.length-1]+','+forkY, d0+0.1);
+            kids.forEach(function(el, i) {
+              addOrgPath('M'+ocx(el)+','+forkY+' L'+ocx(el)+','+otop(el), d0+0.16+i*0.03);
+            });
+          });
         });
       });
-    });
+    }
+
+    drawOrgLines();
   }
 
   // 카카오 우편번호 검색
