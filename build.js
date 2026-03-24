@@ -58,7 +58,6 @@ function buildPage(pagePath) {
     + '\n' + header
     + '\n' + partials['mobile-nav']
     + (meta.noHero === 'true' ? '' : '\n' + partials['hero'])
-    + (meta.noBreadcrumb === 'true' ? '' : '\n' + partials['breadcrumb'])
     + '\n' + body
     + '\n' + partials['footer']
     + '\n' + partials['scripts'];
@@ -66,8 +65,6 @@ function buildPage(pagePath) {
   // Replace all template variables
   html = html.replace(/\{\{title\}\}/g, meta.title || '');
   html = html.replace(/\{\{heroTitle\}\}/g, meta.heroTitle || '');
-  html = html.replace(/\{\{breadcrumbCategory\}\}/g, meta.breadcrumbCategory || '');
-  html = html.replace(/\{\{breadcrumbPage\}\}/g, meta.breadcrumbPage || '');
   html = html.replace(/\{\{extraScripts\}\}/g, meta.extraScripts || '');
 
   // Write output
