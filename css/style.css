@@ -1778,6 +1778,22 @@ ul, li { list-style: none; }
   transition: background 0.2s;
 }
 .btn-subscribe:hover { background: var(--text-body); }
+.btn-subscribe:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.btn-subscribe .spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 .form-submit-note { margin-top: 40px; font-size: 21px; font-weight: 500; color: var(--text-secondary); }
 
 /* ===== Footer ===== */
@@ -2005,81 +2021,94 @@ ul, li { list-style: none; }
 
 /* ===== Mobile ===== */
 @media (max-width: 768px) {
+  /* --- Mobile Design Tokens --- */
+  /* 대제목: 22px  중제목: 18px  소제목: 16px  본문: 15px  보조: 13px */
+  /* 좌우패딩: 16px  섹션: 32px/40px  gap: 16px/24px  테이블: th 13px td 14px */
+
+  /* Header */
   .header-inner { padding: 0 16px; }
   .header-gnb-line {
-    padding: 12px 0 0;
+    height: 60px;
+    padding: 0;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     border-bottom: none;
   }
   .site-header {
-    margin-top: 0;
-    margin-bottom: 0;
-    border-bottom: 1px solid var(--border-strong);
+    position: sticky;
+    top: 0;
+    margin: 0;
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: none;
   }
   .logo { display: flex; justify-content: center; width: 100%; }
-  .logo-img { height: 32px; }
+  .logo-img { height: 32px; margin-bottom: 0; }
   .logo-sub { display: none; }
   .gnb { display: none; }
-  .gnb-wrap { position: absolute; right: 16px; top: 16px; padding-top: 0; }
+  .gnb-wrap { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); padding-top: 0; }
+  .header-icon-btn { padding-bottom: 0; }
 
+  /* Hero */
   .hero-banner { height: 140px; }
   .hero-banner-title { font-size: 24px; }
+  .hero-banner-subtitle { font-size: 15px; margin-top: 4px; }
 
-  .main-content { padding: 32px 16px 24px; }
-  .terms-section-title { font-size: 18px; }
-  .terms-section-body { font-size: 16px; }
+  /* Main Content */
+  .main-content { padding: 32px 16px 40px; }
 
-  .form-section { margin-bottom: 36px; }
+  /* Global Inner Padding */
+  .about-slogan-inner,
+  .about-overview,
+  .about-greeting-inner,
+  .about-history-inner,
+  .about-org-inner,
+  .about-location-inner,
+  .about-philosophy-inner,
+  .committee-members-inner,
+  .terms-preamble-box-inner,
+  .form-privacy-inner { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* --- Terms / Policy Pages --- */
+  .terms-section-title { font-size: 16px; }
+  .terms-section-body { font-size: 15px; }
+  .terms-chapter-title { font-size: 18px; padding: 24px 0 8px; }
+  .terms-preamble { font-size: 16px; }
+  .terms-toc-inner { padding: 16px; grid-template-columns: 1fr; gap: 0; }
+  .terms-toc a { font-size: 15px; }
+  .terms-preamble-box-inner { padding: 0 16px; }
+  .terms-preamble-box p { font-size: 15px; }
+
+  /* --- Form Pages --- */
+  .form-section { margin-bottom: 32px; }
   .form-section-title { font-size: 22px; }
-  .form-section-desc { font-size: 14px; }
-  .form-row { margin-bottom: 20px; }
-  .form-row-half { grid-template-columns: 1fr; gap: 20px; margin-bottom: 20px; }
+  .form-section-desc { font-size: 13px; }
+  .form-row { margin-bottom: 16px; }
+  .form-row-half { grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
   .form-field { flex-direction: column; align-items: stretch; gap: 8px; }
-  .form-input { flex: none; width: 100%; }
-  .form-label { min-width: auto; font-size: 16px; }
-  .form-input { font-size: 16px; }
+  .form-input { flex: none; width: 100%; font-size: 15px; }
+  .form-label { min-width: auto; font-size: 15px; }
   .form-radio-group { flex-wrap: wrap; gap: 16px; }
-  .form-radio-group label { font-size: 16px; }
-  .form-select { font-size: 16px; }
+  .form-radio-group label { font-size: 15px; }
+  .form-select { font-size: 15px; }
   .form-section-check { font-size: 15px; }
-  .form-section-divider { margin-top: 32px; }
-  .btn-subscribe { width: 100%; padding: 18px; font-size: 20px; }
-  .form-submit-note { font-size: 16px; margin-top: 24px; }
+  .form-section-divider { margin-top: 24px; }
+  .form-file-btn { font-size: 15px; padding: 0 16px; }
+  .form-privacy-title { font-size: 16px; }
+  .form-privacy-box { font-size: 13px; padding: 16px; }
+  .form-privacy-agree { font-size: 13px; }
+  .btn-subscribe { width: 100%; padding: 16px; font-size: 18px; }
+  .form-submit-note { font-size: 13px; margin-top: 16px; }
   .form-address-detail { margin-left: 0; }
-
-  .terms-toc-inner {
-    padding: 16px;
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-  .terms-toc a { font-size: 16px; }
-
-  .form-privacy-inner { padding: 0 16px; }
-  .form-privacy-title { font-size: 18px; }
-  .form-privacy-box { font-size: 14px; padding: 16px; }
-  .form-privacy-agree { font-size: 14px; }
-
-  .form-address-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 8px;
-  }
+  .form-address-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
   .form-address-row .form-input--zip { width: 100%; }
-  .form-address-row .form-input--addr {
-    grid-column: 1 / -1;
-    width: 100%;
-  }
+  .form-address-row .form-input--addr { grid-column: 1 / -1; width: 100%; }
   .btn-search { grid-column: 2; grid-row: 1; }
   .form-address-detail-row { padding-right: 0; }
   .form-address-detail-spacer { display: none; }
 
-  .footer-top {
-    flex-direction: column;
-    align-items: center;
-    padding: 32px 16px;
-    gap: 16px;
-  }
+  /* --- Footer --- */
+  .footer-top { flex-direction: column; align-items: center; padding: 24px 16px; gap: 16px; }
   .footer-logo-img { height: 48px; margin-left: 0; }
   .footer-links { justify-content: center; }
   .footer-links .sep { display: none; }
@@ -2090,152 +2119,167 @@ ul, li { list-style: none; }
   .footer-copyright-inner { padding: 0 16px; font-size: 13px; text-align: center; }
   .footer-copyright-br { display: inline; }
 
+  /* --- About Hero --- */
   .about-hero { height: 320px; }
   .about-hero-inner { grid-template-columns: 1fr; gap: 24px; padding: 0 16px; }
   .about-hero-col:not(.about-hero-col--center) { display: none; }
   .about-hero-img--02 { height: 120px; }
   .about-hero-brand { font-size: 18px; }
-  .about-hero-brand-sub { font-size: 14px; margin-bottom: 24px; }
+  .about-hero-brand-sub { font-size: 13px; margin-bottom: 24px; }
   .about-hero-logo { height: 40px; }
+
+  /* About Section (Overview wrapper) */
   .about-section { padding: 32px 0; }
-  .about-section-title { font-size: 20px; margin-bottom: 16px; }
+  .about-section-title { font-size: 18px; margin-bottom: 16px; }
   .about-section-body { font-size: 15px; }
 
-  .about-slogan { padding: 32px 0; }
-  .about-slogan-inner,
-  .about-overview,
-  .about-greeting-inner,
-  .about-history-inner,
-  .about-org-inner,
-  .about-location-inner,
-  .committee-members-inner,
-  .terms-preamble-box-inner { padding-left: 16px !important; padding-right: 16px !important; }
-
   /* About Slogan */
-  .about-slogan-text { font-size: 18px; padding: 0; text-align: left; margin-bottom: 24px; }
+  .about-slogan { padding: 32px 0; }
+  .about-slogan-text { font-size: 18px; padding: 0; text-align: left; margin-bottom: 16px; }
   .about-slogan-text br { display: none; }
 
   /* About Overview */
-  .about-overview-media { flex-direction: column; align-items: center; gap: 16px; }
-  .about-overview-logo-img { max-width: 240px; }
-  .about-overview-img--paper { height: 160px; }
-  .about-overview-img--device { height: 160px; margin-top: 0; margin-left: 0; }
+  .about-overview-media { flex-direction: column; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .about-overview-logo { margin-left: 0; align-items: center; }
+  .about-overview-label { font-size: 15px; }
+  .about-overview-logo-img { max-width: 200px; }
+  .about-overview-img--paper { height: 120px; }
+  .about-overview-img--device { display: none; }
   .about-info-table,
   .about-info-table tbody { display: block; width: 100%; }
   .about-info-table colgroup { display: none; }
-  .about-info-table tr {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    width: 100%;
-  }
+  .about-info-table tr { display: grid; grid-template-columns: 120px 1fr; width: 100%; }
   .about-info-table th,
   .about-info-table td {
-    display: block;
-    font-size: 14px;
-    padding: 6px 10px;
-    border: none !important;
-    border-bottom: 1px solid #666 !important;
+    display: block; font-size: 14px; padding: 8px 10px;
+    border: none !important; border-bottom: 1px solid #666 !important;
   }
-  .about-orgs { margin-top: 32px; }
-  .about-orgs-title { font-size: 20px; }
+  .about-orgs { margin-top: 24px; }
+  .about-orgs-title { font-size: 18px; }
+  .about-orgs-body { font-size: 15px; }
 
-  /* About Subtitles */
+  /* About Subtitles (all sections) */
   .about-greeting-subtitle,
   .about-history-subtitle,
   .about-org-subtitle,
   .about-vision-subtitle,
   .about-philosophy-subtitle,
-  .about-location-subtitle { font-size: 16px; }
+  .about-location-subtitle { font-size: 15px; margin-bottom: 16px; }
 
   /* About Greeting */
+  .about-greeting { padding: 32px 0 40px; }
   .about-greeting-top { flex-direction: column; gap: 16px; }
-  .about-greeting-title { font-size: 24px; }
-  .about-greeting-body { font-size: 14px; }
+  .about-greeting-title { font-size: 22px; }
+  .about-greeting-body { font-size: 15px; }
   .about-greeting-photo-img { width: 100%; max-width: 200px; }
 
   /* About Profile */
-  .about-profile-title { font-size: 18px; }
+  .about-profile-title { font-size: 16px; }
   .about-profile-tables { grid-template-columns: 1fr; gap: 24px; }
+  .about-profile-table thead th { font-size: 14px; }
+  .about-profile-table tbody td { font-size: 14px; }
 
   /* About History */
-  .about-history-title { font-size: 28px; }
+  .about-history { padding: 32px 0 40px; }
+  .about-history-title { font-size: 22px; }
+  .history-tabs {
+    display: flex; gap: 0; margin-bottom: 16px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .history-tabs::-webkit-scrollbar { display: none; }
+  .history-tab { font-size: 13px; padding: 8px 16px; white-space: nowrap; flex-shrink: 0; }
+  .history-arrow { display: none; }
+  .history-cards-viewport { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .history-cards-track { transition: none; }
+  .history-card { flex: 0 0 90%; height: auto; min-height: 280px; padding: 12px; }
+  .history-card-year { font-size: 18px; margin-bottom: 16px; padding-bottom: 12px; }
+  .history-card-year::after { display: none; }
+  .history-timeline { display: none; }
+  .history-card-list li { font-size: 14px; padding: 6px 0 6px 12px; }
+  .history-card-list li::before { top: 14px; width: 4px; height: 4px; }
 
   /* About Org */
+  .about-org { padding: 32px 0 40px; }
   .about-org-inner { overflow-x: auto; }
   .org-grid { min-width: 800px; }
-  .about-org-title { font-size: 24px; }
+  .about-org-title { font-size: 22px; }
 
   /* About Vision */
-  .about-vision-title { font-size: 24px; }
-  .about-vision-cards { grid-template-columns: 1fr; gap: 16px; }
+  .about-vision-video-wrap { height: 200px; }
+  .about-vision-header { padding: 24px 16px 0; }
+  .about-vision-title { font-size: 22px; }
+  .about-vision-subtitle { display: none; }
+  .about-vision-cards {
+    grid-template-columns: 1fr; gap: 12px;
+    margin-top: -40px; padding: 0 16px 32px;
+  }
+  .about-vision-card { padding: 20px 16px; }
+  .about-vision-card-title { font-size: 22px; margin-bottom: 8px; }
+  .about-vision-card-heading { font-size: 15px; margin-bottom: 8px; padding-bottom: 8px; }
+  .about-vision-card-body { font-size: 13px; }
 
   /* About Philosophy */
-  .about-philosophy-title { font-size: 24px; }
-  .about-philosophy-items { flex-direction: column; gap: 20px; }
-  .about-philosophy-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 0 0 20px; }
+  .about-philosophy { padding: 32px 0 40px; }
+  .about-philosophy-title { font-size: 22px; }
+  .about-philosophy-subtitle br { display: none; }
+  .about-philosophy-items { flex-direction: column; gap: 16px; }
+  .about-philosophy-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 0 0 16px; }
   .about-philosophy-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .about-philosophy-item-title { font-size: 18px; }
-  .about-philosophy-item-body { font-size: 14px; }
+  .about-philosophy-item-title { font-size: 16px; }
+  .about-philosophy-item-body { font-size: 14px; line-height: 1.6; }
+  .about-philosophy-item-body br { display: none; }
 
   /* About Location */
-  .about-location-title { font-size: 24px; }
-  .about-location-map iframe { height: 250px; }
-  .about-location-table { font-size: 14px; }
-  .about-location-table th { width: 80px; }
+  .about-location { padding: 32px 0 40px; }
+  .about-location-title { font-size: 22px; }
+  .about-location-subtitle br { display: none; }
+  .about-location-map { height: auto; margin-bottom: 24px; border-radius: 4px; }
+  .about-location-map iframe { height: 220px; }
+  .about-location-table { border-top-width: 2px; border-bottom-width: 2px; }
+  .about-location-table th { width: 70px; padding: 10px 8px; font-size: 13px; }
+  .about-location-table td { padding: 10px 12px; font-size: 14px; }
 
-  /* Committee */
-  .committee-members-title { font-size: 24px; }
-  .committee-grid { grid-template-columns: 1fr; gap: 20px; }
+  /* --- Committee --- */
+  .committee-members-title { font-size: 22px; margin-bottom: 24px; }
+  .committee-grid { grid-template-columns: 1fr; gap: 16px; }
   .committee-photo { width: 80px; height: 80px; }
   .committee-chair .committee-photo { width: 100px; height: 100px; }
-  .committee-name { font-size: 16px; }
+  .committee-name { font-size: 15px; }
   .committee-career { font-size: 13px; }
+  .committee-contact-title { font-size: 16px; }
 
-  /* Grievance */
+  /* --- Grievance --- */
   .grievance-heading { font-size: 18px; }
-  .grievance-subheading { font-size: 18px; }
+  .grievance-subheading { font-size: 16px; }
   .grievance-desc { font-size: 15px; }
-  .grievance-info th { font-size: 14px; width: 100px; }
+  .grievance-note { font-size: 13px; }
+  .grievance-info th { font-size: 13px; width: 100px; }
   .grievance-info td { font-size: 14px; }
-  .grievance-download thead th { font-size: 14px; }
+  .grievance-download thead th { font-size: 13px; }
   .grievance-download tbody td { font-size: 14px; }
 
-  /* Effort Board */
-  .effort-board-title { font-size: 24px; }
-  .effort-board thead th { font-size: 14px; }
+  /* --- Effort Board --- */
+  .effort-board-title { font-size: 22px; margin-top: 40px; padding-top: 32px; }
+  .effort-board thead th { font-size: 13px; }
   .effort-board-row td { font-size: 14px; }
-  .effort-board-no { width: 50px; }
-  .effort-board-date { width: 100px; }
+  .effort-board-row td.effort-board-subject { font-size: 15px; }
+  .effort-board-no { width: 40px; }
+  .effort-board-date { width: 90px; }
 
-  /* Terms TOC */
-  .terms-toc-inner {
-    grid-template-rows: auto;
-    grid-auto-flow: row;
-    grid-template-columns: 1fr;
-  }
-  .terms-toc a { font-size: 16px; }
-
-  /* Terms Preamble Box */
-  .terms-preamble-box-inner { padding: 0 16px; }
-  .terms-preamble-box p { font-size: 15px; }
-
-  /* Pledge */
+  /* --- Pledge --- */
   .pledge-labels { flex-direction: column; }
-  .pledge-label { font-size: 16px; padding: 14px; }
+  .pledge-label { font-size: 15px; padding: 12px; }
   .pledge-section { margin-bottom: 32px; padding-bottom: 32px; }
-  .pledge-title { font-size: 20px; }
-  .pledge-period { font-size: 15px; }
+  .pledge-title { font-size: 18px; }
+  .pledge-period { font-size: 13px; }
 
-  /* No Email */
+  /* --- No Email --- */
   .no-email-icon img { width: 80px; }
-  .no-email-title { font-size: 17px; }
-  .no-email-desc-title { font-size: 17px; }
+  .no-email-title { font-size: 16px; }
+  .no-email-desc-title { font-size: 16px; }
   .no-email-table th { width: 140px; }
 
-  /* Form */
-  .form-file-btn { font-size: 16px; padding: 0 16px; }
-
-  /* Terms Chapter */
-  .terms-chapter-title { font-size: 20px; padding: 24px 0 8px; }
+  /* --- Terms TOC (duplicate override cleanup) --- */
+  .terms-toc-inner { grid-template-rows: auto; grid-auto-flow: row; }
 }
 /* test */

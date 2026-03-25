@@ -49,12 +49,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // 스티키 헤더
+  // 스티키 헤더 (데스크톱/태블릿만)
   var siteHeader = document.querySelector('.site-header');
   if (siteHeader) {
     var scrollThreshold = 60;
     window.addEventListener('scroll', function () {
-      siteHeader.classList.toggle('scrolled', window.scrollY > scrollThreshold);
+      if (window.innerWidth > 768) {
+        siteHeader.classList.toggle('scrolled', window.scrollY > scrollThreshold);
+      }
     }, { passive: true });
   }
 
@@ -70,9 +72,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var currentIndex = 0;
     var viewport = document.getElementById('historyViewport');
 
+    function isMobile() { return window.innerWidth <= 768; }
+
     function updateCarousel() {
-      var cardWidth = allCards.length > 0 ? allCards[0].offsetWidth + 24 : 0;
-      track.style.transform = 'translateX(-' + (currentIndex * cardWidth) + 'px)';
+      if (isMobile()) {
+        var targetCard = allCards[currentIndex];
+        if (targetCard) {
+          viewport.scrollTo({ left: targetCard.offsetLeft, behavior: 'smooth' });
+        }
+      } else {
+        var cardWidth = allCards.length > 0 ? allCards[0].offsetWidth + 24 : 0;
+        track.style.transform = 'translateX(-' + (currentIndex * cardWidth) + 'px)';
+      }
       var hasPrev = currentIndex > 0;
       var hasNext = currentIndex < allCards.length - 2;
       prevBtn.disabled = !hasPrev;
@@ -95,6 +106,9 @@ document.addEventListener('DOMContentLoaded', function () {
             currentIndex = i;
             break;
           }
+        }
+        if (isMobile()) {
+          track.style.transform = 'none';
         }
         updateCarousel();
       });
@@ -177,10 +191,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var submitBtn = document.getElementById('btnSubscribe');
       submitBtn.disabled = true;
-      submitBtn.textContent = '제출 중...';
+      submitBtn.innerHTML = '<span class="spinner"></span>제출 중...';
 
       var period = document.querySelector('input[name="period"]:checked');
       var data = {
+        formType: '구독신청',
         appName: document.getElementById('appName').value,
         appBirth: document.getElementById('appBirth').value,
         appPhone: document.getElementById('appPhone').value,
@@ -188,16 +203,14 @@ document.addEventListener('DOMContentLoaded', function () {
         rcvName: document.getElementById('rcvName').value,
         rcvPhone: document.getElementById('rcvPhone').value,
         rcvEmail: document.getElementById('rcvEmail').value,
-        zipCode: document.getElementById('zipCode').value,
-        baseAddr: document.getElementById('baseAddr').value,
-        detailAddr: document.getElementById('detailAddr').value,
+        zipcode: document.getElementById('zipCode').value,
+        address: document.getElementById('baseAddr').value,
+        addressDetail: document.getElementById('detailAddr').value,
         period: period ? period.value + '개월' : '',
-        copies: document.getElementById('copies').value + '부',
-        totalPrice: document.getElementById('totalPrice').textContent,
-        startDate: document.getElementById('startDate').value
+        price: document.getElementById('totalPrice').textContent
       };
 
-      var scriptUrl = 'https://script.google.com/macros/s/AKfycbxFbOEyfTuD_FjXM_EY7HTKdMKkhGfXu9qlzP0Iz_OBh9nCQTgWIbDMAzycL_jWmFIhWw/exec';
+      var scriptUrl = 'https://script.google.com/macros/s/AKfycbxG7sQhe7YZn745hsE3wfa-O1jlg1nrJ9H5aFxC0ZFAOXX3VzVPlNWzfvH_yZ7JOGQziQ/exec';
       var iframe = document.createElement('iframe');
       iframe.name = 'gas-iframe';
       iframe.style.display = 'none';
@@ -225,12 +238,122 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('totalPrice').textContent = '12,000원';
         document.querySelector('input[name="period"][value="1"]').checked = true;
         submitBtn.disabled = false;
-        submitBtn.textContent = '구독신청';
+        submitBtn.innerHTML = '구독신청';
         document.body.removeChild(iframe);
         document.body.removeChild(hiddenForm);
       });
     });
   }
+
+  // 공통 폼 제출 (정정반론보도, 기사제보, 광고문의, 불편신고, 제휴문의, 저작권문의)
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbxG7sQhe7YZn745hsE3wfa-O1jlg1nrJ9H5aFxC0ZFAOXX3VzVPlNWzfvH_yZ7JOGQziQ/exec';
+
+  var formConfigs = [
+    { formId: 'grievanceForm', formType: '정정반론보도', successMsg: '정정·반론보도 신청이 접수되었습니다.' },
+    { formId: 'newsTipForm', formType: '기사제보', successMsg: '기사제보가 접수되었습니다.' },
+    { formId: 'adInquiryForm', formType: '광고문의', successMsg: '광고문의가 접수되었습니다.' },
+    { formId: 'complaintForm', formType: '불편신고', successMsg: '불편신고가 접수되었습니다.' },
+    { formId: 'partnershipForm', formType: '제휴문의', successMsg: '제휴문의가 접수되었습니다.' },
+    { formId: 'copyrightInquiryForm', formType: '저작권문의', successMsg: '저작권문의가 접수되었습니다.' }
+  ];
+
+  formConfigs.forEach(function(cfg) {
+    var formEl = document.getElementById(cfg.formId);
+    if (!formEl) return;
+
+    formEl.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // 개인정보 동의 체크
+      var privacyCheck = document.getElementById('privacyAgree');
+      if (privacyCheck && !privacyCheck.checked) {
+        alert('개인정보보호를 위한 이용자 동의사항에 동의해주세요.');
+        privacyCheck.focus();
+        return;
+      }
+
+      // 필수 필드 검증
+      var required = formEl.querySelectorAll('[required]');
+      for (var i = 0; i < required.length; i++) {
+        if (!required[i].value || !required[i].validity.valid) {
+          alert(required[i].closest('.form-field').querySelector('.form-label').textContent.replace('*', '') + '을(를) 입력해주세요.');
+          required[i].focus();
+          return;
+        }
+      }
+
+      var submitBtn = formEl.querySelector('.btn-subscribe');
+      var originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner"></span>제출 중...';
+
+      // 파일 처리
+      var fileInput = formEl.querySelector('input[type="file"]');
+      var fileData = '';
+      var fileName = '';
+      var fileType = '';
+
+      function doSubmit() {
+        var data = {
+          formType: cfg.formType,
+          appName: formEl.querySelector('#appName').value,
+          appPhone: formEl.querySelector('#appPhone').value,
+          appEmail: formEl.querySelector('#appEmail').value,
+          title: (formEl.querySelector('[id$="Title"]') || {}).value || '',
+          content: (formEl.querySelector('[id$="Content"]') || {}).value || '',
+          fileName: fileName,
+          fileData: fileData,
+          fileType: fileType
+        };
+
+        var iframe = document.createElement('iframe');
+        iframe.name = 'gas-iframe-' + cfg.formId;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = GAS_URL;
+        hiddenForm.target = iframe.name;
+
+        Object.keys(data).forEach(function(key) {
+          var input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = data[key];
+          hiddenForm.appendChild(input);
+        });
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        iframe.addEventListener('load', function() {
+          alert(cfg.successMsg);
+          formEl.reset();
+          var fileNameDisplay = formEl.querySelector('.form-file-name');
+          if (fileNameDisplay) fileNameDisplay.value = '';
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          document.body.removeChild(iframe);
+          document.body.removeChild(hiddenForm);
+        });
+      }
+
+      if (fileInput && fileInput.files.length > 0) {
+        var file = fileInput.files[0];
+        fileName = file.name;
+        fileType = file.type;
+        var reader = new FileReader();
+        reader.onload = function(evt) {
+          fileData = evt.target.result.split(',')[1]; // base64
+          doSubmit();
+        };
+        reader.readAsDataURL(file);
+      } else {
+        doSubmit();
+      }
+    });
+  });
 
   // 조직도 (Grid 기반)
   var orgGrid = document.getElementById('orgGrid');
