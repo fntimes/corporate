@@ -48,7 +48,7 @@
 
 /* ===== Reset & Base ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; scroll-padding-top: 140px; }
 body {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   color: var(--text-primary);
@@ -2035,6 +2035,8 @@ ul, li { list-style: none; }
   /* 대제목: 22px  중제목: 18px  소제목: 16px  본문: 15px  보조: 13px */
   /* 좌우패딩: 16px  섹션: 32px/40px  gap: 16px/24px  테이블: th 13px td 14px */
 
+  html { scroll-padding-top: 80px; }
+
   /* Header */
   .header-inner { padding: 0 16px; }
   .header-gnb-line {
@@ -2088,6 +2090,7 @@ ul, li { list-style: none; }
   .terms-toc a { font-size: 15px; }
   .terms-preamble-box-inner { padding: 0 16px; }
   .terms-preamble-box p { font-size: 15px; }
+  .terms-effective-date { font-size: 13px; }
 
   /* --- Form Pages --- */
   .form-section { margin-bottom: 32px; }
@@ -2263,8 +2266,9 @@ ul, li { list-style: none; }
   .grievance-subheading { font-size: 16px; }
   .grievance-desc { font-size: 15px; }
   .grievance-note { font-size: 13px; }
-  .grievance-info th { font-size: 13px; width: 100px; }
+  .grievance-info th { font-size: 13px; width: 100px; white-space: normal; }
   .grievance-info td { font-size: 14px; }
+  .grievance-info--fixed .grievance-info-th { width: 140px; }
   .grievance-download thead th { font-size: 13px; }
   .grievance-download tbody td { font-size: 14px; }
 
