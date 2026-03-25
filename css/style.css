@@ -1024,6 +1024,9 @@ ul, li { list-style: none; }
 .main-content--narrow {
   max-width: var(--max-width);
 }
+.main-content--center {
+  text-align: center;
+}
 
 /* ===== Terms Page ===== */
 .terms-toc {
@@ -1386,8 +1389,6 @@ ul, li { list-style: none; }
 }
 .no-email-desc {
   text-align: left;
-  border-top: 1px solid var(--border-default);
-  padding-top: 24px;
 }
 .no-email-desc-title {
   font-size: 20px;
