@@ -49,6 +49,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // 스티키 헤더
+  var siteHeader = document.querySelector('.site-header');
+  if (siteHeader) {
+    var scrollThreshold = 60;
+    window.addEventListener('scroll', function () {
+      siteHeader.classList.toggle('scrolled', window.scrollY > scrollThreshold);
+    }, { passive: true });
+  }
+
   // 연혁 캐러셀
   var historyTabs = document.querySelectorAll('.history-tab');
   var historyCards = document.querySelectorAll('.history-card');
