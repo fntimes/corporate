@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
         price: document.getElementById('totalPrice').textContent
       };
 
-      var scriptUrl = 'https://script.google.com/macros/s/AKfycbxG7sQhe7YZn745hsE3wfa-O1jlg1nrJ9H5aFxC0ZFAOXX3VzVPlNWzfvH_yZ7JOGQziQ/exec';
+      var scriptUrl = 'https://script.google.com/macros/s/AKfycbzS4GdFK96l7XisGycSlaTwOLOv81LrA0vBbxvCvwso8u70NMbtW_xE16E8P8gvG_DEAw/exec';
       var iframe = document.createElement('iframe');
       iframe.name = 'gas-iframe';
       iframe.style.display = 'none';
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // 공통 폼 제출 (정정반론보도, 기사제보, 광고문의, 불편신고, 제휴문의, 저작권문의)
-  var GAS_URL = 'https://script.google.com/macros/s/AKfycbxG7sQhe7YZn745hsE3wfa-O1jlg1nrJ9H5aFxC0ZFAOXX3VzVPlNWzfvH_yZ7JOGQziQ/exec';
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbzS4GdFK96l7XisGycSlaTwOLOv81LrA0vBbxvCvwso8u70NMbtW_xE16E8P8gvG_DEAw/exec';
 
   var formConfigs = [
     { formId: 'grievanceForm', formType: '정정반론보도', successMsg: '정정·반론보도 신청이 접수되었습니다.' },
