@@ -1931,9 +1931,35 @@ ul, li { list-style: none; }
   .about-location-table { font-size: 16px; }
 
   /* Committee */
+  .committee-members-title { font-size: 28px; }
   .committee-grid { gap: 24px 32px; }
   .committee-photo { width: 100px; height: 100px; }
   .committee-chair .committee-photo { width: 120px; height: 120px; }
+
+  /* About Subtitles */
+  .about-greeting-subtitle,
+  .about-history-subtitle,
+  .about-org-subtitle,
+  .about-vision-subtitle,
+  .about-philosophy-subtitle,
+  .about-location-subtitle { font-size: 22px; }
+
+  /* About Slogan & Profile */
+  .about-slogan-text { font-size: 26px; }
+  .about-orgs-title { font-size: 22px; }
+  .about-orgs-body { font-size: 17px; }
+  .about-profile-title { font-size: 20px; }
+
+  /* Terms Chapter */
+  .terms-chapter-title { font-size: 24px; }
+
+  /* Effort Board / Grievance */
+  .effort-board-title { font-size: 28px; }
+  .grievance-heading { font-size: 20px; }
+  .grievance-subheading { font-size: 20px; }
+
+  /* No Email */
+  .no-email-title { font-size: 20px; }
 }
 
 /* ===== Mobile ===== */
@@ -2072,11 +2098,23 @@ ul, li { list-style: none; }
   .about-orgs { margin-top: 32px; }
   .about-orgs-title { font-size: 20px; }
 
+  /* About Subtitles */
+  .about-greeting-subtitle,
+  .about-history-subtitle,
+  .about-org-subtitle,
+  .about-vision-subtitle,
+  .about-philosophy-subtitle,
+  .about-location-subtitle { font-size: 16px; }
+
   /* About Greeting */
   .about-greeting-top { flex-direction: column; gap: 16px; }
   .about-greeting-title { font-size: 24px; }
   .about-greeting-body { font-size: 14px; }
   .about-greeting-photo-img { width: 100%; max-width: 200px; }
+
+  /* About Profile */
+  .about-profile-title { font-size: 18px; }
+  .about-profile-tables { grid-template-columns: 1fr; gap: 24px; }
 
   /* About History */
   .about-history-title { font-size: 28px; }
@@ -2085,7 +2123,6 @@ ul, li { list-style: none; }
   .about-org-inner { overflow-x: auto; }
   .org-grid { min-width: 800px; }
   .about-org-title { font-size: 24px; }
-  .about-org-subtitle { font-size: 14px; }
 
   /* About Vision */
   .about-vision-title { font-size: 24px; }
@@ -2114,6 +2151,9 @@ ul, li { list-style: none; }
   .committee-career { font-size: 13px; }
 
   /* Grievance */
+  .grievance-heading { font-size: 18px; }
+  .grievance-subheading { font-size: 18px; }
+  .grievance-desc { font-size: 15px; }
   .grievance-info th { font-size: 14px; width: 100px; }
   .grievance-info td { font-size: 14px; }
   .grievance-download thead th { font-size: 14px; }
@@ -2141,12 +2181,20 @@ ul, li { list-style: none; }
   /* Pledge */
   .pledge-labels { flex-direction: column; }
   .pledge-label { font-size: 16px; padding: 14px; }
+  .pledge-section { margin-bottom: 32px; padding-bottom: 32px; }
   .pledge-title { font-size: 20px; }
   .pledge-period { font-size: 15px; }
 
   /* No Email */
   .no-email-icon img { width: 80px; }
   .no-email-title { font-size: 17px; }
+  .no-email-desc-title { font-size: 17px; }
   .no-email-table th { width: 140px; }
+
+  /* Form */
+  .form-file-btn { font-size: 16px; padding: 0 16px; }
+
+  /* Terms Chapter */
+  .terms-chapter-title { font-size: 20px; padding: 24px 0 8px; }
 }
 /* test */
