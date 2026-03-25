@@ -49,12 +49,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // 스티키 헤더 (데스크톱/태블릿만)
+  // 스티키 헤더 (데스크톱/태블릿만, 사이트맵 열린 상태 제외)
   var siteHeader = document.querySelector('.site-header');
   if (siteHeader) {
     var scrollThreshold = 60;
     window.addEventListener('scroll', function () {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 768 && !gnb.classList.contains('active')) {
         siteHeader.classList.toggle('scrolled', window.scrollY > scrollThreshold);
       }
     }, { passive: true });
