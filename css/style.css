@@ -2096,6 +2096,7 @@ ul, li { list-style: none; }
   .form-section { margin-bottom: 32px; }
   .form-section-title { font-size: 22px; }
   .form-section-desc { font-size: 13px; }
+  .grievance-form { margin-top: 24px; }
   .form-row { margin-bottom: 16px; }
   .form-row-half { grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
   .form-field { flex-direction: column; align-items: stretch; gap: 8px; }
