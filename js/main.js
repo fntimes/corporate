@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     mobileNav.classList.remove('active');
     menuToggle.style.display = '';
     menuClose.style.display = 'none';
-    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
 
   menuToggle.addEventListener('click', function () {
@@ -19,13 +19,17 @@ document.addEventListener('DOMContentLoaded', function () {
       var isOpen = mobileNav.classList.toggle('active');
       menuToggle.style.display = isOpen ? 'none' : '';
       menuClose.style.display = isOpen ? '' : 'none';
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      document.documentElement.style.overflow = isOpen ? 'hidden' : '';
     } else {
-      var isActive = gnb.classList.toggle('active');
-      gnbOverlay.classList.toggle('active', isActive);
-      menuToggle.style.display = isActive ? 'none' : '';
-      menuClose.style.display = isActive ? '' : 'none';
-      document.body.style.overflow = isActive ? 'hidden' : '';
+      if (!gnb.classList.contains('active')) {
+        gnb.classList.add('active');
+        gnbOverlay.classList.add('active');
+        menuToggle.style.display = 'none';
+        menuClose.style.display = '';
+        document.documentElement.style.overflow = 'hidden';
+      } else {
+        closeMenu();
+      }
     }
   });
 
@@ -43,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
           gnbOverlay.classList.add('active');
           menuToggle.style.display = 'none';
           menuClose.style.display = '';
-          document.body.style.overflow = 'hidden';
+          document.documentElement.style.overflow = 'hidden';
         }
       }
     });

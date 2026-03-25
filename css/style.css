@@ -48,7 +48,7 @@
 
 /* ===== Reset & Base ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 body {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   color: var(--text-primary);
@@ -100,17 +100,27 @@ ul, li { list-style: none; }
   align-items: flex-end;
   justify-content: space-between;
   padding-top: 24px;
+  border-bottom: 2px solid transparent;
 }
 .site-header:has(.gnb.active) .header-gnb-line {
-  border-bottom: 2px solid var(--border-strong);
+  border-bottom-color: var(--border-strong);
 }
 .header-sub-line {
   display: none;
-  padding-top: 4px;
-  padding-bottom: 8px;
 }
 .site-header:has(.gnb.active) .header-sub-line {
   display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -28px;
+  padding: 4px 0 8px;
+  z-index: 200;
+}
+.site-header:has(.gnb.active) .header-sub-line .logo-sub {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
 }
 
 /* Logo */
