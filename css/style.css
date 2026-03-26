@@ -752,6 +752,9 @@ ul, li { list-style: none; }
   letter-spacing: -0.5px;
 }
 
+/* Org Chart */
+.org-grid-mobile { display: none; width: 100%; }
+
 /* Org Chart (Grid) */
 .org-grid {
   position: relative;
@@ -1569,9 +1572,16 @@ ul, li { list-style: none; }
   border-bottom: 1px solid var(--border-light);
 }
 .effort-board-detail-inner {
-  padding: 24px 20px;
+  padding: 36px 24px;
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.5;
+}
+.effort-board-detail-img {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.effort-board-detail-img img {
+  max-width: 100%;
   color: var(--text-primary);
 }
 
@@ -1981,8 +1991,9 @@ ul, li { list-style: none; }
   .about-history-inner { padding: 0 24px; }
 
   /* About Org */
-  .org-grid { grid-template-columns: repeat(26, 1fr); overflow-x: auto; min-width: 900px; }
-  .about-org-inner { overflow-x: auto; padding: 0 24px; }
+  .about-org-inner { padding: 0 24px; }
+  .org-grid { display: none; }
+  .org-grid-mobile { display: block; }
   .about-org-title { font-size: 28px; }
 
   /* About Vision */
@@ -2214,15 +2225,16 @@ ul, li { list-style: none; }
 
   /* About Org */
   .about-org { padding: 32px 0 40px; }
-  .about-org-inner { overflow-x: auto; }
-  .org-grid { min-width: 800px; }
+  .about-org-inner { padding: 0 16px; }
+  .org-grid { display: none; }
+  .org-grid-mobile { display: block; }
   .about-org-title { font-size: 22px; }
 
   /* About Vision */
-  .about-vision-video-wrap { height: 200px; }
+  .about-vision-video-wrap { height: 240px; }
   .about-vision-header { padding: 24px 16px 0; }
   .about-vision-title { font-size: 22px; }
-  .about-vision-subtitle { display: none; }
+  .about-vision-subtitle { font-size: 14px; }
   .about-vision-cards {
     grid-template-columns: 1fr; gap: 12px;
     margin-top: -58px; padding: 0 16px 32px;
@@ -2280,7 +2292,10 @@ ul, li { list-style: none; }
   .effort-board-row td { font-size: 14px; }
   .effort-board-row td.effort-board-subject { font-size: 15px; }
   .effort-board-no { width: 40px; }
-  .effort-board-date { width: 90px; }
+  .effort-board-detail-inner { padding: 24px 0; font-size: 15px; }
+  .effort-board-date { width: auto; white-space: nowrap; }
+  .effort-board-detail-inner { padding: 16px 0; font-size: 15px; }
+  .effort-board-detail-img img { width: 90%; }
 
   /* --- Pledge --- */
   .pledge-labels { flex-direction: column; }
