@@ -1575,6 +1575,22 @@ ul, li { list-style: none; }
   padding: 36px 24px;
   font-size: 17px;
   line-height: 1.5;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.effort-board-detail-inner p {
+  margin-bottom: 16px;
+}
+.effort-board-detail-inner p:last-child {
+  margin-bottom: 0;
+}
+.effort-board-detail-link {
+  margin-top: 20px;
+  word-break: break-all;
+}
+.effort-board-detail-link a {
+  color: var(--accent);
+  text-decoration: underline;
 }
 .effort-board-detail-img {
   text-align: center;
