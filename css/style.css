@@ -826,6 +826,24 @@ ul, li { list-style: none; }
 .cPl { background: #7444AA; }
 .cT  { background: #1A8E8E; }
 .cTl { background: #22A8A8; }
+.cGn { background: #4E8C3F; }
+.cO  { background: #C85A2B; }
+.cOl { background: #E07B2E; }
+.org-cap {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 6px;
+  padding-left: 6px;
+  color: #6b7280;
+  font-size: 12.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  z-index: 1;
+  opacity: 0;
+  animation: orgAppear 0.3s ease forwards;
+  animation-delay: var(--d, 0s);
+}
 
 /* ===== About Vision ===== */
 .about-vision {

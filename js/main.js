@@ -366,13 +366,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var connections = [
       { from: 'ceo', to: ['evp'], type: 'straight', delay: 0.15 },
       { from: 'evp', to: ['ailab'], type: 'side', delay: 0.35 },
-      { from: 'evp', to: ['mgmt','mkt','edit','aim','reg'], type: 'fork', delay: 0.4 },
-      { from: 'edit', to: ['fing','indg'], type: 'fork', delay: 0.75 },
-      { from: 'aim', to: ['dig','cmp','wm'], type: 'fork', delay: 0.78 },
-      { from: 'wm', to: ['wt1','wt2'], type: 'fork', delay: 1.05 },
-      { from: 'fing', to: ['f1','f2','f3'], type: 'fork', delay: 1.0 },
-      { from: 'indg', to: ['i1','i2'], type: 'fork', delay: 1.03 },
-      { from: 'reg', to: ['r1','r2','r3'], type: 'fork', delay: 0.82 },
+      { from: 'evp', to: ['mgmt','mkt','fing','indg','aim','wm','reg'], type: 'fork', delay: 0.4 },
+      { from: 'fing', to: ['f1','f2','f3'], type: 'fork', delay: 0.85 },
+      { from: 'indg', to: ['i1','i2'], type: 'fork', delay: 0.88 },
+      { from: 'aim', to: ['dig','cmp'], type: 'fork', delay: 0.9 },
+      { from: 'wm', to: ['wt1','wt2'], type: 'fork', delay: 0.95 },
+      { from: 'reg', to: ['r1','r2','r3'], type: 'fork', delay: 1.0 },
     ];
 
     function ocx(el) { return el.offsetLeft + el.offsetWidth / 2; }
