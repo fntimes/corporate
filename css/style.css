@@ -759,7 +759,7 @@ ul, li { list-style: none; }
 .org-grid {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(28, 1fr);
+  grid-template-columns: repeat(28, minmax(0, 1fr));
   grid-template-rows:
     52px 50px 44px 52px 64px 56px 42px 56px;
   justify-content: center;
