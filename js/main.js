@@ -365,8 +365,9 @@ document.addEventListener('DOMContentLoaded', function () {
   if (orgGrid && orgSvg) {
     var connections = [
       { from: 'ceo', to: ['evp'], type: 'straight', delay: 0.15 },
-      { from: 'evp', to: ['ailab'], type: 'side', delay: 0.35 },
-      { from: 'evp', to: ['mgmt','mkt','fing','indg','aim','wm','reg'], type: 'fork', delay: 0.4 },
+      { from: 'ceo', to: ['ailab'], type: 'trunk', delay: 0.22 },
+      { from: 'ceo', to: ['mgmt','mkt','reg'], type: 'fork', ratio: 0.34, delay: 0.4 },
+      { from: 'evp', to: ['fing','indg','aim','wm'], type: 'fork', delay: 0.5 },
       { from: 'fing', to: ['f1','f2','f3'], type: 'fork', delay: 0.85 },
       { from: 'indg', to: ['i1','i2'], type: 'fork', delay: 0.88 },
       { from: 'aim', to: ['dig','cmp'], type: 'fork', delay: 0.9 },
@@ -413,12 +414,18 @@ document.addEventListener('DOMContentLoaded', function () {
               addOrgPath('M'+sx+','+sy+' L'+mx+','+sy+' L'+mx+','+ey+' L'+ex+','+ey, d0);
               return;
             }
+            if (conn.type === 'trunk') {
+              // 부모 수직 트렁크 중간에서 우측 자식으로 분기 (자식 세로 중앙 높이)
+              var cEl = document.getElementById(conn.to[0]);
+              addOrgPath('M'+ocx(pEl)+','+ocy(cEl)+' L'+olt(cEl)+','+ocy(cEl), d0);
+              return;
+            }
             // fork: 하나의 연결 path로 그리기
             var kids = conn.to.map(function(id) { return document.getElementById(id); }).filter(Boolean);
             if (kids.length === 0) return;
             var pBotY = obot(pEl);
             var cTopY = Math.min.apply(null, kids.map(otop));
-            var forkY = pBotY + (cTopY - pBotY) * 0.5;
+            var forkY = pBotY + (cTopY - pBotY) * (conn.ratio != null ? conn.ratio : 0.5);
             var xs = kids.map(ocx).sort(function(a,b){ return a-b; });
 
             // 전체를 하나의 path로: 수직 → 좌측으로 이동 → 좌에서 우로 수평 (각 child 위치에서 드롭)

@@ -759,9 +759,9 @@ ul, li { list-style: none; }
 .org-grid {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(26, 1fr);
+  grid-template-columns: repeat(28, 1fr);
   grid-template-rows:
-    64px 28px 56px 70px 56px 42px 56px 42px 56px;
+    52px 50px 44px 52px 64px 56px 42px 56px;
   justify-content: center;
   width: 100%;
   max-width: var(--max-width);
@@ -831,10 +831,9 @@ ul, li { list-style: none; }
 .cOl { background: #E07B2E; }
 .org-cap {
   display: flex;
-  align-items: flex-start;
-  padding-top: 6px;
+  align-items: center;
   padding-left: 6px;
-  color: #6b7280;
+  color: #374151;
   font-size: 12.5px;
   font-weight: 500;
   white-space: nowrap;
