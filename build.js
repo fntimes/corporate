@@ -31,18 +31,23 @@ function parsePage(filePath) {
 
 // 3. Inject GNB active states into header
 function injectGnbActive(headerHtml, gnbActive, megaActiveHref) {
-  // Add gnb-active to the matching parent link
-  if (gnbActive) {
-    headerHtml = headerHtml.replace(
-      `<a href="#">${gnbActive}</a>`,
-      `<a href="#" class="gnb-active">${gnbActive}</a>`
+  // Add mega-active to the matching sub-link.
+  // 최상위 GNB 링크와 href가 겹칠 수 있으므로(예: /ethics/code) .gnb-sub 내부로 한정한다.
+  if (megaActiveHref) {
+    headerHtml = headerHtml.replace(/<div class="gnb-sub">[\s\S]*?<\/div>/g, (block) =>
+      block.replace(
+        `<a href="${megaActiveHref}">`,
+        `<a href="${megaActiveHref}" class="mega-active">`
+      )
     );
   }
-  // Add mega-active to the matching sub-link
-  if (megaActiveHref) {
+  // Add gnb-active to the matching parent link.
+  // 최상위 항목 중 일부는 href가 '#'이 아니므로(회사소개, 윤리강령) href에 의존하지 않는다.
+  if (gnbActive) {
+    const label = gnbActive.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     headerHtml = headerHtml.replace(
-      `<a href="${megaActiveHref}">`,
-      `<a href="${megaActiveHref}" class="mega-active">`
+      new RegExp(`<a href="([^"]*)">${label}</a>`),
+      `<a href="$1" class="gnb-active">${gnbActive}</a>`
     );
   }
   return headerHtml;

@@ -116,6 +116,8 @@ ul, li { list-style: none; }
   bottom: -36px;
   padding: 8px 0;
   z-index: 200;
+  /* 전체 폭을 덮어 사이트맵 첫 항목의 클릭을 가로막으므로 통과시킴 (내부에 링크 없음) */
+  pointer-events: none;
 }
 .site-header:has(.gnb.active) .header-sub-line .logo-sub {
   max-width: var(--max-width);
@@ -171,9 +173,7 @@ ul, li { list-style: none; }
 }
 .gnb-item > a:hover { color: var(--accent); }
 .gnb-item > a.gnb-active {
-  color: var(--accent);
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  color: var(--brand-blue-deep);
 }
 
 /* Header Icons */
@@ -1135,6 +1135,10 @@ ul, li { list-style: none; }
   padding-bottom: 0;
   margin-bottom: 0;
 }
+.terms-section:has(+ .charter-table-wrap) {
+  border-bottom: none;
+  padding-bottom: 0;
+}
 .terms-section:last-child {
   padding-bottom: 0;
   margin-bottom: 0;
@@ -1197,6 +1201,58 @@ ul, li { list-style: none; }
 .terms-chapter-title:first-of-type {
   border-top: none;
   padding-top: 0;
+}
+/* ===== Charter Page ===== */
+.charter-meta {
+  margin-top: 8px;
+}
+/* 메타 표 다음의 첫 챕터 제목은 :first-of-type 여백 제거 대상이 아님 */
+.charter-meta + .terms-chapter-title {
+  padding-top: 32px;
+}
+.charter-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 32px;
+}
+.charter-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 3px solid var(--text-primary);
+  border-bottom: 3px solid var(--text-primary);
+}
+.charter-table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-text);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 16px;
+  text-align: center;
+  white-space: nowrap;
+}
+.charter-table thead th + th {
+  border-left: 1px solid rgba(255, 255, 255, 0.32);
+}
+.charter-table tbody td {
+  font-size: 17px;
+  color: var(--text-primary);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-strong);
+  border-right: 1px solid var(--border-strong);
+  vertical-align: middle;
+  line-height: 1.5;
+}
+.charter-table tbody td:last-child {
+  border-right: none;
+}
+.charter-table tbody td:first-child {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.charter-note {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: -16px;
 }
 .terms-effective-date {
   font-size: 18px;
@@ -2137,6 +2193,14 @@ ul, li { list-style: none; }
   .terms-preamble-box-inner { padding: 0 16px; }
   .terms-preamble-box p { font-size: 15px; }
   .terms-effective-date { font-size: 13px; }
+
+  /* --- Charter Page --- */
+  .charter-meta + .terms-chapter-title { padding-top: 24px; }
+  .charter-table-wrap { -webkit-overflow-scrolling: touch; }
+  .charter-table { min-width: 600px; }
+  .charter-table thead th { font-size: 14px; padding: 10px 12px; }
+  .charter-table tbody td { font-size: 14px; padding: 10px 12px; }
+  .charter-note { font-size: 13px; }
 
   /* --- Form Pages --- */
   .form-section { margin-bottom: 32px; }
